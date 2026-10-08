@@ -1347,6 +1347,76 @@ table.t tr:nth-child(even) td{background:color-mix(in srgb,var(--bg) 60%,var(--s
 :root[data-device="tablet"] .sec-head h2{min-width:50%}
 .topbar{background:color-mix(in srgb,var(--surface) 96%,transparent)}
 .wtF,.preview-frame{background:#fff}
+/* ===== unit locks ===== */
+.lock-i{vertical-align:-2px}
+.unit-locked .unit-title{color:var(--muted)}
+.mod-link.is-locked{color:var(--muted);opacity:.75}
+.mod-link.is-locked .mapicon{display:inline-grid;place-items:center;width:24px}
+.mod-card.is-locked{opacity:.6;filter:grayscale(.4)}
+.mod-card.is-locked .num{color:var(--signal)}
+.lock-page{display:grid;place-items:center;padding:20px 0;max-width:none!important}
+.lock-card{width:min(640px,100%)}
+.lock-badge{width:56px;height:56px;border-radius:16px;display:grid;place-items:center;background:color-mix(in srgb,var(--signal) 14%,var(--surface));color:var(--signal)}
+.lock-card h1{margin:.2em 0 .3em;font-size:1.6rem}
+.lock-list{list-style:none;padding:0;margin:10px 0 16px;display:grid;gap:6px}
+.lock-list a{display:flex;align-items:center;gap:10px;padding:9px 12px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);text-decoration:none}
+.lock-list a:hover{border-color:var(--teal)}.lock-list a span:nth-child(2){flex:1}
+.lock-pct{color:var(--muted);font-size:.85rem;font-variant-numeric:tabular-nums}
+/* ===== feedback ===== */
+.fb-link{background:none;border:0;font:inherit;text-align:left;cursor:pointer;width:100%}
+.fb-card{border:1px solid var(--line);border-radius:14px;background:var(--surface);padding:14px 16px;display:grid;gap:12px}
+.fb-q{display:grid;gap:6px}
+.fb-stars{display:flex;gap:4px}
+.fb-stars label{cursor:pointer;position:relative}.fb-stars input{position:absolute;opacity:0;pointer-events:none}
+.fb-stars span{font-size:1.9rem;line-height:1;color:var(--line);transition:color .12s,transform .12s;display:inline-block}
+.fb-stars:has(input:checked) label span{color:var(--amber)}
+.fb-stars label:has(input:checked)~label span{color:var(--line)}
+.fb-stars label:hover span{transform:scale(1.12)}
+.fb-stars input:focus-visible+span{outline:3px solid var(--amber);border-radius:4px}
+.fb-diff{max-width:440px}
+.fb-t{display:grid;gap:6px}.fb-t textarea{width:100%;box-sizing:border-box;resize:vertical}
+.fb-eval{display:grid;gap:12px;max-width:980px}
+.fb-eval h2{margin:.6em 0 0;font-size:1.15rem}
+.likert-wrap{overflow-x:auto}
+.likert{border-collapse:separate;border-spacing:0;width:100%;min-width:640px}
+.likert th,.likert td{padding:10px 8px;border-bottom:1px solid var(--line);font-size:.9rem}
+.likert thead th{font-size:.78rem;color:var(--muted);text-align:center;font-weight:700}
+.likert thead th:first-child,.likert tbody th{text-align:left;font-weight:600}
+.likert td{text-align:center}
+.likert label{display:inline-grid;place-items:center;cursor:pointer;width:34px;height:34px}
+.likert input{position:absolute;opacity:0}
+.likert label span{width:22px;height:22px;border-radius:50%;border:2px solid var(--line);transition:all .12s}
+.likert input:checked+span{border-color:var(--teal);background:var(--teal);box-shadow:inset 0 0 0 4px var(--surface)}
+.likert input:focus-visible+span{outline:3px solid var(--amber)}
+.nps{display:flex;flex-wrap:wrap;gap:6px}
+.nps label{cursor:pointer}.nps input{position:absolute;opacity:0}
+.nps span{display:grid;place-items:center;width:42px;height:42px;border-radius:10px;border:1px solid var(--line);background:var(--bg);font-weight:700}
+.nps input:checked+span{background:var(--navy);border-color:var(--navy);color:#fff}
+.nps input:focus-visible+span{outline:3px solid var(--amber)}
+@media (max-width:700px){
+  .likert{min-width:0}.likert thead{display:none}
+  .likert tbody tr{display:grid;grid-template-columns:repeat(5,1fr);border-bottom:1px solid var(--line);padding:8px 0}
+  .likert tbody th{grid-column:1/-1;border:0;padding:4px 2px}
+  .likert td{border:0;padding:2px;display:grid;justify-items:center;font-size:.68rem;color:var(--muted)}
+  .likert td:after{content:attr(data-l);line-height:1.15;text-align:center}
+}
+.fb-bar{position:relative;background:var(--bg);border-radius:6px;height:22px;min-width:140px;overflow:hidden}
+.fb-bar i{position:absolute;inset:0 auto 0 0;background:color-mix(in srgb,var(--teal) 35%,var(--surface))}
+.fb-bar span{position:relative;padding-left:8px;font-weight:700;font-size:.85rem;line-height:22px}
+.fb-list{display:grid;gap:8px;max-height:520px;overflow:auto}
+.fb-item{border:1px solid var(--line);border-radius:10px;padding:10px 12px;background:var(--surface)}
+.fb-item p{margin:.3em 0}.fb-meta{font-size:.82rem;color:var(--muted)}
+#fbDlg{max-width:520px;width:calc(100% - 32px)}
+/* ===== remembered profiles ===== */
+.known{display:grid;gap:8px;margin:10px 0}
+.known-row{display:flex;gap:8px;align-items:stretch}
+.known-btn{flex:1;display:flex;align-items:center;gap:12px;text-align:left;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);border-radius:12px;padding:10px 14px;cursor:pointer;font:inherit;transition:border-color .15s,box-shadow .15s}
+.known-btn:hover{border-color:var(--teal);box-shadow:0 4px 14px -8px rgba(16,40,32,.4)}
+.known-av{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:var(--navy);color:#fff;font-weight:800;flex:none}
+.known-tx{display:grid;flex:1;min-width:0}.known-tx span{color:var(--muted);font-size:.85rem;overflow:hidden;text-overflow:ellipsis}
+.known-x{align-self:center}
+.linkbtn{background:none;border:0;color:var(--teal);font:inherit;font-weight:700;cursor:pointer;padding:6px 0;text-decoration:underline;text-underline-offset:2px}
+.known-note{font-size:.82rem;margin-top:10px}
 
 </style>
 </head>
@@ -1414,7 +1484,8 @@ const CONFIG = {
   HEARTBEAT_SECONDS: 60,
   IDLE_MINUTES: 5,
   MAX_UPLOAD_MB: 10,
-  AI_MIN_AGE: 0           // 0 = no age limit; keep the same as AI_MIN_AGE in Code.gs
+  AI_MIN_AGE: 0,          // 0 = no age limit; keep the same as AI_MIN_AGE in Code.gs
+  LOCK_UNITS: true        // true = a unit opens only after every module in the earlier units is complete (admins are never locked)
 };
 
 /* ============ STORAGE (safe) ============ */
@@ -8508,9 +8579,9 @@ function renderMap(){
   const cur = (location.hash.match(/^#\/m\/([^?]+)/) || [])[1], h = location.hash;
   const link = (href, label, on) => `<a class="mod-link ${on ? "active" : ""}" href="${href}">${label}</a>`;
   $("#map").innerHTML = `<div class="pill" id="pill"></div>` + `<div class="unit"><div class="unit-title">Start here</div>${link("#/overview", `<span class="mapicon">◎</span><span>Course overview</span>`, h === "#/overview")}${link("#/home", `<span class="mapicon">⌂</span><span>Course home</span>`, !cur && (h === "#/home" || h === ""))}</div>` +
-    COURSE.map(u => `<div class="unit"><div class="unit-title">${esc(u.title)}</div><div class="unit-sub">${esc(u.sub)}</div>
-    ${u.modules.map(m => `<a class="mod-link ${cur===m.id?"active":""}" href="#/m/${m.id}">${ring(modulePct(m))}<span>${esc(m.id)} ${esc(m.title)}</span></a>`).join("")}</div>`).join("") +
-    `<div class="map-foot">${link("#/lab", "Sandbox lab", h === "#/lab")}${link("#/ailog", "My AI-use log", h === "#/ailog")}${link("#/progress", "My progress", h === "#/progress")}${link("#/glossary", "Glossary", h === "#/glossary")}${link("#/references", "References (APA)", h === "#/references")}${link("#/privacy", "Privacy", h === "#/privacy")}${isAdmin() || adminSess() ? link("#/admin", "Teacher dashboard", h === "#/admin") : ""}</div>`;
+    COURSE.map(u => { const lk = unitLocked(u); return `<div class="unit${lk ? " unit-locked" : ""}"><div class="unit-title">${lk ? lockIcon + " " : ""}${esc(u.title)}</div><div class="unit-sub">${lk ? "Finish the earlier units to unlock" : esc(u.sub)}</div>
+    ${u.modules.map(m => `<a class="mod-link ${cur===m.id?"active":""}${lk ? " is-locked" : ""}" href="#/m/${m.id}" ${lk ? `aria-label="${esc(m.id + " " + m.title)} (locked)"` : ""}>${lk ? `<span class="mapicon">${lockIcon}</span>` : ring(modulePct(m))}<span>${esc(m.id)} ${esc(m.title)}</span></a>`).join("")}</div>`; }).join("") +
+    `<div class="map-foot">${link("#/lab", "Sandbox lab", h === "#/lab")}${link("#/ailog", "My AI-use log", h === "#/ailog")}${link("#/progress", "My progress", h === "#/progress")}${link("#/glossary", "Glossary", h === "#/glossary")}${link("#/references", "References (APA)", h === "#/references")}${link("#/privacy", "Privacy", h === "#/privacy")}${link("#/feedback", "Course feedback", h === "#/feedback")}<button class="mod-link fb-link" type="button" onclick="openGeneralFeedback()">Report a problem or idea</button>${isAdmin() || adminSess() ? link("#/admin", "Teacher dashboard", h === "#/admin") : ""}</div>`;
   const a = $("#map .mod-link.active"), pill = $("#pill");
   if (a && pill){ const top = a.offsetTop, hh = a.offsetHeight; pill.style.height = hh + "px";
     if (pillTop != null && canAnim()) A(pill, {top:[pillTop + "px", top + "px"]}, SPRING); pill.style.top = top + "px"; pillTop = top; }
@@ -8530,7 +8601,7 @@ function viewHome(){
     <div class="spot span3 boardspot"><div class="lbl">Your board</div><h3>${esc(b.name)}</h3><div class="controls">${Object.values(BOARDS).map(x => `<button class="chip ${x.key === b.key ? "sel" : ""}" data-setboard="${x.key}">${esc(x.short)}</button>`).join("")}</div><span class="explain">Wiring tables and code open on this board first.</span></div>
    </div>
    ${COURSE.map(u => `<h2>${esc(u.title)}</h2><p class="explain" style="margin-top:-.3em">${esc(u.blurb || "")}</p><div class="bento">
-    ${u.modules.map(m => `<a class="spot mod-card span3" href="#/m/${m.id}"><span class="num">Module ${m.id} • about ${m.minutes} min</span><h3>${esc(m.title)}</h3>
+    ${u.modules.map(m => `<a class="spot mod-card span3${unitLocked(u) ? " is-locked" : ""}" href="#/m/${m.id}"><span class="num">${unitLocked(u) ? lockIcon + " Locked • " : ""}Module ${m.id} • about ${m.minutes} min</span><h3>${esc(m.title)}</h3>
       <span class="lbl">${m.sections.filter(s => !s.optional).length} sections • quiz • checkpoint ${esc(m.checkpoint.code)}</span><div class="bar"><i data-w="${Math.round(modulePct(m)*100)}"></i></div></a>`).join("")}
    </div>`).join("")}
    <div class="note">Press <span class="kbd">Ctrl</span> + <span class="kbd">K</span> (or tap Search) to jump to any module, section, or sensor. Use <b>Listen</b> on any section to hear it read aloud. The <b>Sandbox lab</b> collects every virtual activity in one place.</div>`;
@@ -8544,6 +8615,7 @@ function viewHome(){
 let pendingAnchor = null, currentSection = "";
 function viewModule(id){
   const m = MODULES[id]; if (!m){ location.hash = "#/home"; return; }
+  if (modLocked(id)){ currentModule = ""; renderMap(); viewLocked(id); return; }
   currentModule = id; logEvent(id, "open", "module_open", "");
   const v = $("#view"), pct = modulePct(m), u = unitOf(id);
   v.innerHTML = `<div class="mod-layout"><div>
@@ -8557,6 +8629,7 @@ function viewModule(id){
      <div class="sec-body">${typeof s.html === "function" ? s.html() : s.html}</div>${s.interactive ? [].concat(s.interactive).map(x => `<div data-int="${x}"></div>`).join("") : ""}</section>`).join("")}
    <section class="section" id="s-quiz"><h2>Check your understanding</h2><p class="explain">Answer every question. Each one explains why, whichever option you choose.</p><div id="quiz"></div><div id="quizScore" class="feedback"></div></section>
    <section class="section" id="s-rating"><h2>Self-rating</h2><p>Choose the description that fits you right now. Be honest: it helps your teacher help you.</p><div class="rating" id="rating"></div></section>
+   ${moduleFeedbackHTML()}
    <section class="section" id="s-output"><h2>Competency checkpoint and output</h2>
     <table class="t"><tr><th>Objective</th><th>Task</th><th>Met when…</th></tr><tr><td>${esc(m.checkpoint.code)}</td><td>${esc(m.checkpoint.task)}</td><td>${esc(m.checkpoint.met)}</td></tr></table>
     <p><b>${esc(m.checkpoint.upload)}</b> Images, PDF, Office files, CSV, code files (.ino, .gs, .html, .js), ZIP, or short videos up to ${CONFIG.MAX_UPLOAD_MB} MB.</p>
@@ -8565,7 +8638,7 @@ function viewModule(id){
    ${m.refs && m.refs.length ? `<section class="section" id="s-refs"><h2>References</h2><ul class="refs">${m.refs.filter(k => REF[k]).map(k => REF[k]).sort((a, b) => a[0].localeCompare(b[0])).map(r => `<li>${esc(r[0])}${r[1] ? ` <a href="${r[1]}" target="_blank" rel="noopener">${esc(r[1])}</a>` : ""}</li>`).join("")}</ul></section>` : ""}
    <div class="controls" style="margin-top:28px">${prevNext(id)}</div></div>
    <nav class="toc" aria-label="On this page"><b>On this page</b>${m.sections.map(s=>`<a href="#/m/${id}?s=${s.id}" data-toc="s-${s.id}">${esc(s.title)}</a>`).join("")}
-    <a href="#/m/${id}?s=quiz" data-toc="s-quiz">Quiz</a><a href="#/m/${id}?s=rating" data-toc="s-rating">Self-rating</a><a href="#/m/${id}?s=output" data-toc="s-output">Checkpoint and output</a>${m.refs ? `<a href="#/m/${id}?s=refs" data-toc="s-refs">References</a>` : ""}</nav></div>`;
+    <a href="#/m/${id}?s=quiz" data-toc="s-quiz">Quiz</a><a href="#/m/${id}?s=rating" data-toc="s-rating">Self-rating</a><a href="#/m/${id}?s=feedback" data-toc="s-feedback">Module feedback</a><a href="#/m/${id}?s=output" data-toc="s-output">Checkpoint and output</a>${m.refs ? `<a href="#/m/${id}?s=refs" data-toc="s-refs">References</a>` : ""}</nav></div>`;
   v.querySelectorAll(".bt-tabs button").forEach(x => x.setAttribute("aria-selected", x.dataset.b === getBoard()));
   v.querySelectorAll("[data-int]").forEach(el => mountInteractive(el));
   v.querySelectorAll("[data-listen]").forEach(b => b.onclick = () => { const sec = m.sections.find(s=>s.id===b.dataset.listen); speak(sec.title + ". " + v.querySelector("#s-"+sec.id+" .sec-body").innerText); pop(b, .92); });
@@ -8575,7 +8648,7 @@ function viewModule(id){
     b.classList.add("done"); b.textContent = "Done"; pop(b);
     updateModuleProgress(m); checkModuleDone(m); renderMap(); });
   v.querySelectorAll(".toc a").forEach(a => a.onclick = e => { e.preventDefault(); const t = document.getElementById(a.dataset.toc); if (t) t.scrollIntoView({behavior: reduceMotion()?"auto":"smooth", block:"start"}); history.replaceState(null, "", a.getAttribute("href")); });
-  renderQuiz(m); renderRating(m); setupUpload(m); renderMap(); animateRings(v);
+  renderQuiz(m); renderRating(m); mountModuleFeedback(m); setupUpload(m); renderMap(); animateRings(v);
   reveal(v.querySelectorAll(".section, .objectives"));
   if ("IntersectionObserver" in window){
     const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting){ currentSection = e.target.id; v.querySelectorAll(".toc a").forEach(a => a.classList.toggle("on", a.dataset.toc === e.target.id)); } }), {rootMargin:"-30% 0px -60% 0px"});
@@ -8597,7 +8670,7 @@ function updateModuleProgress(m){ const p = modulePct(m), lbl = $("#pctLbl"); if
   const c = $(".ring-big .ring-fg"); if (c){ const C = +c.dataset.c, prev = +c.getAttribute("stroke-dashoffset"); c.setAttribute("stroke-dashoffset", C*(1-p)); A(c, {strokeDashoffset:[prev, C*(1-p)]}, {duration:.8}); } }
 function prevNext(id){ const ids = Object.keys(MODULES), i = ids.indexOf(id);
   return (i>0?`<a class="btn" href="#/m/${ids[i-1]}">Previous module</a>`:"") + (i<ids.length-1?`<a class="btn primary" href="#/m/${ids[i+1]}">Next module</a>`:`<a class="btn primary" href="#/progress">See my progress</a>`); }
-function checkModuleDone(m){ if (modulePct(m) === 1 && !prog.done[m.id+":__module"]) { prog.done[m.id+":__module"] = Date.now(); saveProg(); logEvent(m.id, "module", "module_done", "1"); toast(`Module ${m.id} complete.`); confetti(); } }
+function checkModuleDone(m){ if (modulePct(m) === 1 && !prog.done[m.id+":__module"]) { const lockBefore = lockSnapshot(); prog.done[m.id+":__module"] = Date.now(); setTimeout(() => { unlockCheck(lockBefore); renderMap(); if (Object.values(MODULES).every(x => modulePct(x) === 1)) setTimeout(() => toast("You finished every module! Please share your course feedback (side menu → Course feedback)."), 2500); }, 50); saveProg(); logEvent(m.id, "module", "module_done", "1"); toast(`Module ${m.id} complete.`); confetti(); } }
 function renderQuiz(m){
   const box = $("#quiz"); box.innerHTML = m.quiz.map((q,i) => `<div class="q"><b>${i+1}. ${esc(q.q)}</b><div class="opts">${q.o.map((o,k)=>`<button class="opt" data-q="${i}" data-k="${k}">${esc(o)}</button>`).join("")}</div><div class="explain" id="qe${i}"></div></div>`).join("");
   const score = () => { const s = $("#quizScore"); if (!s) return; s.textContent = quizDone(m) ? `Score: ${quizScore(m)} of ${m.quiz.length}.` + (quizScore(m) < Math.ceil(m.quiz.length * 0.8) ? " Review the explanations, then reread the sections you missed." : " Well done.") : ""; };
@@ -8694,12 +8767,129 @@ addEventListener("resize", () => { clearTimeout(applyDevice.t); applyDevice.t = 
 addEventListener("orientationchange", () => setTimeout(applyDevice, 200));
 
 </script>
+<script>/* ==== js/gate.js ==== */
+/* ============ UNIT LOCKS, FEEDBACK, AND EMAIL RECOGNITION ============ */
+/* --- unit locks: a unit opens when every module in all earlier units is complete. Admins are never locked. --- */
+const unitDone = u => u.modules.every(m => modulePct(m) === 1);
+const bypassLocks = () => !CONFIG.LOCK_UNITS || isAdmin() || !!adminSess();
+function unitLocked(u){ if (!u || bypassLocks()) return false; const i = COURSE.indexOf(u); return i > 0 && !COURSE.slice(0, i).every(unitDone); }
+const modLocked = id => unitLocked(unitOf(id));
+const lockIcon = `<svg class="lock-i" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>`;
+function viewLocked(id){
+  const m = MODULES[id], u = unitOf(id), i = COURSE.indexOf(u), todo = [].concat(...COURSE.slice(0, i).map(x => x.modules)).filter(x => modulePct(x) < 1);
+  $("#view").innerHTML = `<section class="lock-page"><div class="card lock-card">
+    <div class="lock-badge">${lockIcon.replace('width="14" height="14"', 'width="28" height="28"')}</div>
+    <p class="crumb">${esc(u.title)}</p><h1>Module ${esc(id)} is locked</h1>
+    <p>${esc(u.title.split(":")[0])} opens when you finish every module before it. You have <b>${todo.length}</b> module${todo.length === 1 ? "" : "s"} to go:</p>
+    <ul class="lock-list">${todo.map(x => `<li><a href="#/m/${x.id}">${ring(modulePct(x), 22)}<span><b>${esc(x.id)}</b> ${esc(x.title)}</span><span class="lock-pct">${Math.round(modulePct(x) * 100)}%</span></a></li>`).join("")}</ul>
+    <p class="explain"><b>A module is finished when</b> every required section is marked done, the quiz is answered, and your self-rating is chosen. Optional sections do not count.</p>
+    <div class="controls"><a class="btn primary" href="#/m/${todo[0] ? todo[0].id : "1.1"}">Continue with Module ${todo[0] ? esc(todo[0].id) : "1.1"}</a><a class="btn" href="#/home">Course home</a></div></div></section>`;
+  animateRings($("#view")); A(".lock-card", {opacity:[0,1], y:[10,0]}, {duration:.35});
+}
+function unlockCheck(before){ /* call after a module completes: celebrate newly opened units */
+  COURSE.forEach((u, i) => { if (i && before[i] && !unitLocked(u)){ toast(`${u.title.split(":")[0]} is now unlocked!`); } }); }
+const lockSnapshot = () => COURSE.map(u => unitLocked(u));
+
+/* --- feedback --- */
+const fbKey = () => "b2b_fb_" + (user ? user.email : "g");
+const fbGet = () => store.get(fbKey(), {mod:{}, course:null});
+const fbSave = x => store.set(fbKey(), x);
+async function sendFeedback(data){ const r = await api("feedback", Object.assign({device, page:location.hash.slice(0, 60)}, data));
+  return r.ok || r.offline || r.error === "network" ? true : r; }
+const stars = (name, val, label) => `<div class="fb-stars" role="radiogroup" aria-label="${esc(label)}">${[1,2,3,4,5].map(n => `<label><input type="radio" name="${name}" value="${n}" ${+val === n ? "checked" : ""}><span aria-label="${n} of 5">★</span></label>`).join("")}</div>`;
+function moduleFeedbackHTML(){ return `<section class="section" id="s-feedback"><h2>Module feedback <span class="opt-tag">Optional</span></h2><p class="explain">One minute. Your answers help improve this module. They do not affect your progress.</p><div id="modFb"></div></section>`; }
+function mountModuleFeedback(m){
+  const box = $("#modFb"); if (!box) return; const F = fbGet(), cur = F.mod[m.id] || {};
+  box.innerHTML = `<div class="fb-card"><div class="fb-q"><b>How useful was this module?</b>${stars("fbR", cur.rating, "Usefulness, 1 to 5 stars")}</div>
+    <div class="fb-q"><b>How difficult was it?</b><div class="seg seg-sm fb-diff">${["Too easy","Just right","Too hard"].map(d => `<label><input type="radio" name="fbD" value="${d}" ${cur.difficulty === d ? "checked" : ""}><span>${d}</span></label>`).join("")}</div></div>
+    <div class="row2"><label class="fb-t"><b>What worked well?</b><textarea class="dinput" id="fbC" rows="3" maxlength="2000">${esc(cur.comment || "")}</textarea></label><label class="fb-t"><b>What should we improve?</b><textarea class="dinput" id="fbI" rows="3" maxlength="2000" placeholder="e.g. a confusing step, a broken activity, something missing">${esc(cur.improve || "")}</textarea></label></div>
+    <div class="controls"><button class="btn primary" id="fbGo" type="button">${cur.sent ? "Update my feedback" : "Send feedback"}</button><span class="explain" id="fbMsg">${cur.sent ? "✓ Sent. You can update it anytime." : ""}</span></div></div>`;
+  $("#fbGo").onclick = async () => { const r = document.querySelector('input[name="fbR"]:checked'), d = document.querySelector('input[name="fbD"]:checked');
+    if (!r){ $("#fbMsg").textContent = "Choose a star rating first."; return; }
+    const data = {kind:"module", moduleId:m.id, rating:+r.value, difficulty:d ? d.value : "", comment:$("#fbC").value.trim(), improve:$("#fbI").value.trim()};
+    $("#fbGo").disabled = true; const ok = await sendFeedback(data); $("#fbGo").disabled = false;
+    if (ok !== true){ $("#fbMsg").textContent = "Could not send: " + (ok.error || "try again"); return; }
+    const F2 = fbGet(); F2.mod[m.id] = Object.assign(data, {sent:Date.now()}); fbSave(F2); logEvent(m.id, "feedback", "module_feedback", String(data.rating));
+    $("#fbMsg").textContent = "✓ Thank you! Feedback sent."; $("#fbGo").textContent = "Update my feedback"; toast("Thanks for your feedback!"); };
+}
+const EVAL_ITEMS = [["relevant","The course content was relevant to what I want to learn or do."],["clear","The explanations were clear and easy to follow."],["anim","The animations and interactives helped me understand how things work."],["practice","The Mission Lab and sandboxes gave me enough practice."],["ai","Proto (the AI assistant) helped me learn without doing the work for me."],["pace","The pace and amount of work were manageable."],["app","The web app was easy to use on my device."],["sdg","I can explain how a prototype can support a specific SDG target."]];
+const LIKERT = ["Strongly disagree","Disagree","Neutral","Agree","Strongly agree"];
+function viewFeedback(){
+  const F = fbGet(), c = F.course || {}, sc = c.scores || {}, allDone = Object.values(MODULES).every(m => modulePct(m) === 1);
+  $("#view").innerHTML = `<p class="crumb">Course feedback</p><h1>Course feedback</h1>
+   <p class="lede-mod">${allDone ? "You finished the course. Congratulations! " : ""}Tell us what worked and what to change. It takes about 5 minutes. You can send it now and update it after you finish the course.</p>
+   <form id="evalF" class="fb-eval card" novalidate>
+    <h2>Your experience</h2><p class="explain">Choose one answer for each statement.</p>
+    <div class="likert-wrap"><table class="likert"><thead><tr><th scope="col">Statement</th>${LIKERT.map(l => `<th scope="col">${l}</th>`).join("")}</tr></thead><tbody>
+     ${EVAL_ITEMS.map(it => `<tr><th scope="row">${esc(it[1])}</th>${LIKERT.map((l, i) => `<td data-l="${l}"><label><input type="radio" name="ev_${it[0]}" value="${i + 1}" ${+sc[it[0]] === i + 1 ? "checked" : ""} aria-label="${esc(it[1])}: ${l}"><span></span></label></td>`).join("")}</tr>`).join("")}</tbody></table></div>
+    <h2>Your confidence</h2><p class="explain">Think about building an IoT prototype that sends sensor data to a web app (1 = not at all confident, 5 = very confident).</p>
+    <div class="row2"><div class="fb-q"><b>Before this course</b>${stars("ev_conf_before", sc.conf_before, "Confidence before the course")}</div><div class="fb-q"><b>Now</b>${stars("ev_conf_now", sc.conf_now, "Confidence now")}</div></div>
+    <h2>Would you recommend it?</h2><p class="explain">How likely are you to recommend this course to a friend or colleague? (0 = not at all likely, 10 = extremely likely)</p>
+    <div class="nps" role="radiogroup" aria-label="Likelihood to recommend, 0 to 10">${Array.from({length:11}, (_, n) => `<label><input type="radio" name="ev_nps" value="${n}" ${c.nps === n ? "checked" : ""}><span>${n}</span></label>`).join("")}</div>
+    <div class="row2"><label class="fb-t"><b>What was most valuable?</b><textarea class="dinput" id="evC" rows="4" maxlength="2000">${esc(c.comment || "")}</textarea></label><label class="fb-t"><b>What should we change or add?</b><textarea class="dinput" id="evI" rows="4" maxlength="2000">${esc(c.improve || "")}</textarea></label></div>
+    <p class="explain">Your answers are saved with your account so the course team can improve the course. If you agreed to research use, they are de-identified first (see Privacy).</p>
+    <div class="err" id="evErr" role="alert"></div><div class="controls"><button class="btn primary big" type="submit" id="evGo">${c.sent ? "Update my feedback" : "Send course feedback"}</button></div></form>`;
+  $("#evalF").onsubmit = async e => { e.preventDefault(); const scores = {};
+    EVAL_ITEMS.forEach(it => { const x = document.querySelector(`input[name="ev_${it[0]}"]:checked`); if (x) scores[it[0]] = +x.value; });
+    ["conf_before","conf_now"].forEach(k => { const x = document.querySelector(`input[name="ev_${k}"]:checked`); if (x) scores[k] = +x.value; });
+    const n = document.querySelector('input[name="ev_nps"]:checked');
+    if (Object.keys(scores).length < EVAL_ITEMS.length){ $("#evErr").textContent = `Answer all ${EVAL_ITEMS.length} statements (${EVAL_ITEMS.length - EVAL_ITEMS.filter(it => scores[it[0]]).length} left).`; return; }
+    if (!n){ $("#evErr").textContent = "Choose a number from 0 to 10 for “recommend”."; return; }
+    const data = {kind:"course", scores, nps:+n.value, comment:$("#evC").value.trim(), improve:$("#evI").value.trim()};
+    $("#evGo").disabled = true; const ok = await sendFeedback(data); $("#evGo").disabled = false;
+    if (ok !== true){ $("#evErr").textContent = "Could not send: " + (ok.error || "try again"); return; }
+    const F2 = fbGet(); F2.course = Object.assign(data, {sent:Date.now()}); fbSave(F2); logEvent("course", "feedback", "course_feedback", String(data.nps));
+    $("#evErr").textContent = ""; $("#evGo").textContent = "Update my feedback"; confetti(); toast("Thank you! Your course feedback was sent."); };
+  A("#evalF", {opacity:[0,1], y:[10,0]}, {duration:.35});
+}
+function openGeneralFeedback(){
+  let d = $("#fbDlg");
+  if (!d){ d = document.createElement("dialog"); d.id = "fbDlg"; document.body.appendChild(d); }
+  d.innerHTML = `<form method="dialog" id="gfF"><h2 style="margin-top:.2em">Send feedback</h2><p class="explain">Found a problem or have an idea? Tell us. We attach the page you are on.</p>
+   <div class="field"><label for="gfT">Type</label><select id="gfT"><option>Something is broken</option><option>Content error or typo</option><option>Suggestion</option><option>Question</option><option>Other</option></select></div>
+   <div class="field"><label for="gfM">Message</label><textarea id="gfM" class="dinput" rows="5" maxlength="2000" placeholder="What happened, and what did you expect? Do not include passwords or API keys."></textarea></div>
+   <div class="err" id="gfE" role="alert"></div><div class="controls"><button class="btn primary" id="gfGo" value="send">Send</button><button class="btn" value="cancel" formnovalidate>Cancel</button></div></form>`;
+  d.showModal(); $("#gfM").focus();
+  $("#gfGo").onclick = async e => { e.preventDefault(); const msg = $("#gfM").value.trim(); if (msg.length < 5){ $("#gfE").textContent = "Write a short message first."; return; }
+    $("#gfGo").disabled = true; const ok = await sendFeedback({kind:"general", moduleId:currentModule || "", difficulty:$("#gfT").value, comment:msg}); $("#gfGo").disabled = false;
+    if (ok !== true){ $("#gfE").textContent = "Could not send: " + (ok.error || "try again"); return; }
+    d.close(); toast("Thanks! Your feedback was sent."); };
+}
+/* admin: feedback summary */
+function adminFeedbackHTML(fb){
+  fb = fb || []; const mods = fb.filter(f => f.kind === "module"), course = fb.filter(f => f.kind === "course"), gen = fb.filter(f => f.kind === "general");
+  const avg = a => a.length ? (a.reduce((s, x) => s + x, 0) / a.length) : null, f1 = v => v == null ? "–" : v.toFixed(1);
+  const byMod = Object.keys(MODULES).map(id => { const r = mods.filter(f => String(f.moduleId) === id), d = k => r.filter(f => f.difficulty === k).length;
+    return [id, r.length, avg(r.map(f => +f.rating).filter(Boolean)), d("Too easy"), d("Just right"), d("Too hard")]; });
+  const sc = course.map(f => { try { return JSON.parse(f.scores || "{}"); } catch(e){ return {}; } });
+  const nps = course.map(f => f.nps).filter(v => v !== "" && v != null).map(Number), npsScore = nps.length ? Math.round((nps.filter(v => v >= 9).length - nps.filter(v => v <= 6).length) / nps.length * 100) : null;
+  const comments = fb.filter(f => f.comment || f.improve).slice().reverse();
+  return `<h2>Feedback</h2>
+   <div class="bento"><div class="spot span2"><div class="big">${course.length}</div><div class="lbl">course evaluations</div></div><div class="spot span2"><div class="big">${npsScore == null ? "–" : (npsScore > 0 ? "+" : "") + npsScore}</div><div class="lbl">Net Promoter Score (−100 to +100)</div></div>
+    <div class="spot span2"><div class="big">${f1(avg(sc.map(s => s.conf_before).filter(Boolean)))} → ${f1(avg(sc.map(s => s.conf_now).filter(Boolean)))}</div><div class="lbl">confidence before → now (1–5)</div></div></div>
+   <h3>Course evaluation (average, 1–5)</h3><div class="adm-tablewrap"><table class="t"><tr><th>Statement</th><th>Average</th><th>Responses</th></tr>${EVAL_ITEMS.map(it => { const v = sc.map(s => s[it[0]]).filter(Boolean); return `<tr><td>${esc(it[1])}</td><td><div class="fb-bar"><i style="width:${(avg(v) || 0) / 5 * 100}%"></i><span>${f1(avg(v))}</span></div></td><td>${v.length}</td></tr>`; }).join("")}</table></div>
+   <h3>Module feedback</h3><div class="adm-tablewrap"><table class="t"><tr><th>Module</th><th>Responses</th><th>Usefulness (1–5)</th><th>Too easy</th><th>Just right</th><th>Too hard</th></tr>${byMod.map(r => `<tr><td>${r[0]} ${esc(MODULES[r[0]].title)}</td><td>${r[1]}</td><td>${f1(r[2])}</td><td>${r[3]}</td><td>${r[4]}</td><td>${r[5]}</td></tr>`).join("")}</table></div>
+   <h3>Comments and reports (${comments.length}) <span class="explain">· ${gen.length} general reports</span></h3>
+   <div class="controls"><input class="dinput" id="fbQ" placeholder="Filter comments…"><button class="btn" id="fbCsv" type="button">Download feedback .csv</button></div>
+   <div class="fb-list" id="fbList">${comments.slice(0, 200).map(f => `<div class="fb-item"><div class="fb-meta"><b>${esc(f.kind === "general" ? f.difficulty || "General" : f.kind === "course" ? "Course" : "Module " + f.moduleId)}</b> · ${esc(f.at)} · ${esc(f.email)}${f.page ? ` · <span class="mono">${esc(f.page)}</span>` : ""}${f.rating ? ` · ${"★".repeat(+f.rating)}` : ""}</div>${f.comment ? `<p>${esc(f.comment)}</p>` : ""}${f.improve ? `<p><b>Improve:</b> ${esc(f.improve)}</p>` : ""}</div>`).join("") || `<p class="explain">No comments yet.</p>`}</div>`;
+}
+function wireAdminFeedback(fb){
+  const q = $("#fbQ"); if (q) q.oninput = () => { const t = q.value.toLowerCase(); $$("#fbList .fb-item").forEach(x => x.hidden = t && !x.textContent.toLowerCase().includes(t)); };
+  const c = $("#fbCsv"); if (c) c.onclick = () => { const H = ["at","email","kind","moduleId","page","rating","difficulty","scores","nps","comment","improve"]; downloadText("feedback.csv", [H.join(",")].concat((fb || []).map(f => H.map(h => `"${String(f[h] == null ? "" : f[h]).replace(/"/g, '""')}"`).join(","))).join("\n"), "text/csv"); };
+}
+
+/* --- email recognition: profiles used on this device --- */
+const knownProfiles = () => Object.values(store.get("b2b_profiles", {})).filter(p => p && p.email).sort((a, b) => (b.lastUsed || 0) - (a.lastUsed || 0));
+function forgetProfile(email){ const all = store.get("b2b_profiles", {}); delete all[email]; store.set("b2b_profiles", all); }
+
+</script>
 <script>/* ==== js/pages.js ==== */
 /* ============ DATA PRIVACY STATEMENT ============ */
 const PRIVACY_HTML = `
 <h3>Data Privacy Statement</h3>
 <p><b>Who we are.</b> This course, <i>${COURSE_TITLE}</i>, is managed by <b>Morris C. Bana, LPT</b>, an independent course creator, as the personal information controller. It is a personal project and is not run by any school or university.</p>
-<p><b>What we collect.</b> Your last and given name, age, email address, role, grade level(s), and school or industry; your learning activity (visits, active time, device type, board choice, sections completed, quiz answers, self-ratings, sandbox attempts, AI-use log entries); the files you upload; and the questions you ask the AI assistant and its answers.</p>
+<p><b>What we collect.</b> Your last and given name, age, email address, role, grade level(s), and school or industry; your learning activity (visits, active time, device type, board choice, sections completed, quiz answers, self-ratings, sandbox attempts, AI-use log entries); the feedback and problem reports you send; the files you upload; and the questions you ask the AI assistant and its answers.</p>
+<p><b>On your device.</b> Your profile and progress are also kept in this browser so you can continue offline and sign in again with one tap. On a shared device, remove your name from the sign-in screen (✕) when you finish.</p>
 <p><b>Why we collect it.</b> To deliver the course, let your teacher monitor and support your learning, give feedback, keep the course safe, and improve it. Use of your data for research is optional and needs your separate agreement (see Research use below).</p>
 <p><b>Legal basis.</b> Your consent, and for learners below 18, the consent of a parent or guardian, under the Data Privacy Act of 2012 (Republic Act No. 10173) and its Implementing Rules and Regulations.</p>
 <p><b>Where it is stored and who can see it.</b> In the course owner's personal Google account (Google Sheets and Google Drive), accessible only to the course owner and your teacher(s). Questions you send to the AI assistant are processed by Google's Gemini API, or by Anthropic's Claude API as a backup, to generate answers. We do not sell your data or share it with anyone else unless required by law.</p>
@@ -8849,13 +9039,20 @@ function newForm(){
 }
 function backForm(){
   $("#formArea").innerHTML = `<form id="back" novalidate><h2 style="margin:.2em 0 .1em">Welcome back</h2>
-   <p class="explain" style="margin-top:0">Enter the email you used when you signed up. We'll bring back your profile and progress.</p>
-   <div class="field"><label for="bEmail">Email / School email</label><input id="bEmail" type="email" autocomplete="email" inputmode="email" required></div>
-   <div class="err" id="bErr" role="alert"></div><button class="btn primary big" type="submit" id="bGo">Continue</button></form>`;
+   ${knownProfiles().length ? `<p class="explain" style="margin-top:0">This device remembers you. Tap your name to continue.</p>
+   <div class="known">${knownProfiles().slice(0, 5).map(p => `<div class="known-row"><button type="button" class="known-btn" data-email="${esc(p.email)}"><span class="known-av">${esc(String(p.givenName || p.name || p.email)[0].toUpperCase())}</span><span class="known-tx"><b>Continue as ${esc(p.givenName || p.name || "")}</b><span>${esc(p.email)}</span></span><span aria-hidden="true">→</span></button><button type="button" class="btn small known-x" data-forget="${esc(p.email)}" aria-label="Remove ${esc(p.email)} from this device" title="Remove from this device">✕</button></div>`).join("")}</div>
+   <button type="button" class="linkbtn" id="bOther">Use a different email</button>` : `<p class="explain" style="margin-top:0">Enter the email you used when you signed up. We'll bring back your profile and progress.</p>`}
+   <div class="field" id="bEmailWrap" ${knownProfiles().length ? "hidden" : ""}><label for="bEmail">Email / School email</label><input id="bEmail" type="email" autocomplete="email" inputmode="email" required></div>
+   <div class="err" id="bErr" role="alert"></div><button class="btn primary big" type="submit" id="bGo" ${knownProfiles().length ? "hidden" : ""}>Continue</button>
+   ${knownProfiles().length ? `<p class="explain known-note">Shared computer or iPad? Tap ✕ to remove your name from this device when you finish.</p>` : ""}</form>`;
+  const showOther = () => { $("#bEmailWrap").hidden = false; $("#bGo").hidden = false; const o = $("#bOther"); if (o) o.hidden = true; $("#bEmail").focus(); };
+  if ($("#bOther")) $("#bOther").onclick = showOther;
+  document.querySelectorAll(".known-btn").forEach(b => b.onclick = () => { $("#bEmail").value = b.dataset.email; b.disabled = true; b.querySelector("b").textContent = "Signing you in…"; $("#back").requestSubmit ? $("#back").requestSubmit() : $("#back").dispatchEvent(new Event("submit")); });
+  document.querySelectorAll(".known-x").forEach(b => b.onclick = () => { if (!confirm("Remove " + b.dataset.forget + " from this device? Your progress on the course server is kept.")) return; forgetProfile(b.dataset.forget); store.del("b2b_fb_" + b.dataset.forget); backForm(); toast("Removed from this device."); });
   $("#back").onsubmit = async e => {
     e.preventDefault();
     const email = $("#bEmail").value.trim().toLowerCase();
-    const fail = msg => { $("#bErr").textContent = msg; A("#back", {x:[0,-10,10,-6,6,0]}, {duration:.4}); };
+    const fail = msg => { $("#bErr").textContent = msg; $("#bEmailWrap").hidden = false; $("#bGo").hidden = false; document.querySelectorAll(".known-btn").forEach(k => { k.disabled = false; const kb = k.querySelector("b"); if (kb && /Signing/.test(kb.textContent)) kb.textContent = "Try again"; }); A("#back", {x:[0,-10,10,-6,6,0]}, {duration:.4}); };
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return fail("Enter a valid email address.");
     $("#bGo").disabled = true; $("#bGo").textContent = "Finding your profile…";
     const local = store.get("b2b_profiles", {})[email];
@@ -8874,7 +9071,7 @@ function backForm(){
     toast(`Welcome back, ${user.givenName || user.name}!`); location.hash = "#/home"; route();
   };
 }
-function rememberUser(){ store.set("b2b_user", user); const all = store.get("b2b_profiles", {}); all[user.email] = user; store.set("b2b_profiles", all); }
+function rememberUser(){ user.lastUsed = Date.now(); store.set("b2b_user", user); const all = store.get("b2b_profiles", {}); all[user.email] = user; store.set("b2b_profiles", all); }
 const isAdmin = () => !!(user && user.admin);
 
 /* ============ PROTO: AI LEARNING ASSISTANT ============ */
@@ -9063,7 +9260,8 @@ async function viewAdmin(){
   $("#admBody").innerHTML = `<div class="bento"><div class="spot span3"><div class="big">${L.length}</div><div class="lbl">learners</div></div><div class="spot span3"><div class="big">${(L.reduce((s, l) => s + (+l.minutes || 0), 0) / 60).toFixed(1)} h</div><div class="lbl">total active time</div></div><div class="spot span3"><div class="big">${r.aiCount || 0}</div><div class="lbl">questions to Proto</div></div><div class="spot span3"><div class="big">${r.uploadCount || 0}</div><div class="lbl">uploaded files</div></div></div>
    <div class="controls"><input class="dinput" id="admQ" placeholder="Filter by name, school, role…"><button class="btn" id="admCsv">Download .csv</button></div>
    <div class="adm-tablewrap"><table class="t" id="admT"><tr><th>Learner</th><th>Role</th><th>School / industry</th><th>Board</th><th>Active time</th><th>Modules done</th><th>Last seen</th><th>Folder</th></tr>
-   ${L.map(l => `<tr><td>${esc(l.name)}<br><span class="explain">${esc(l.email)}</span></td><td>${esc(l.role)} ${esc(l.grades || "")}</td><td>${esc(l.school || l.industry || "")}</td><td>${esc((BOARDS[l.board] || {}).short || l.board || "")}</td><td>${(+l.minutes / 60 || 0).toFixed(1)} h</td><td>${esc(String(l.modulesDone || 0))} / ${mods.length}</td><td>${esc(l.lastSeen || "")}</td><td>${l.folderUrl ? `<a href="${l.folderUrl}" target="_blank" rel="noopener">Open</a>` : ""}</td></tr>`).join("")}</table></div>`;
+   ${L.map(l => `<tr><td>${esc(l.name)}<br><span class="explain">${esc(l.email)}</span></td><td>${esc(l.role)} ${esc(l.grades || "")}</td><td>${esc(l.school || l.industry || "")}</td><td>${esc((BOARDS[l.board] || {}).short || l.board || "")}</td><td>${(+l.minutes / 60 || 0).toFixed(1)} h</td><td>${esc(String(l.modulesDone || 0))} / ${mods.length}</td><td>${esc(l.lastSeen || "")}</td><td>${l.folderUrl ? `<a href="${l.folderUrl}" target="_blank" rel="noopener">Open</a>` : ""}</td></tr>`).join("")}</table></div>${adminFeedbackHTML(r.feedback)}`;
+  wireAdminFeedback(r.feedback);
   $("#admQ").oninput = e => { const q = e.target.value.toLowerCase(); $$("#admT tr").forEach((tr, i) => { if (i) tr.hidden = q && !tr.textContent.toLowerCase().includes(q); }); };
   $("#admCsv").onclick = () => { const H = ["name","email","role","grades","school","industry","board","minutes","modulesDone","lastSeen"]; downloadText("learners.csv", [H.join(",")].concat(L.map(l => H.map(h => `"${String(l[h] == null ? "" : l[h]).replace(/"/g,'""')}"`).join(","))).join("\n"), "text/csv"); };
 }
@@ -9076,11 +9274,11 @@ function route(){
   $("#map").style.display = guest ? "none" : ""; $(".shell").classList.toggle("noside", guest); document.body.classList.toggle("guest", guest);
   $("#searchBtn").style.display = guest ? "none" : ""; $("#aiFab").hidden = guest; $("#bottomNav").hidden = guest;
   if (guest && h0 === "#/admin"){ if (aiOpen) closeAI(); viewAdmin(); return; }
-  if (guest){ if (aiOpen) closeAI(); viewWelcome(location.hash === "#/back" ? "back" : "new"); return; }
+  if (guest){ if (aiOpen) closeAI(); viewWelcome(location.hash === "#/back" || (location.hash !== "#/new" && knownProfiles().length) ? "back" : "new"); return; }
   renderWho(); currentModule = "";
   const h = location.hash, mm = h.match(/^#\/m\/([^?]+)(?:\?s=(.+))?/), page = h.split("?")[0];
   if (mm){ pendingAnchor = mm[2] || null; viewModule(mm[1]); }
-  else ({"#/progress":viewProgress, "#/overview":viewOverview, "#/references":viewReferences, "#/glossary":viewGlossary, "#/privacy":viewPrivacy, "#/ailog":viewAiLog, "#/lab":viewLab, "#/admin":viewAdmin}[page] || viewHome)();
+  else ({"#/progress":viewProgress, "#/overview":viewOverview, "#/references":viewReferences, "#/glossary":viewGlossary, "#/privacy":viewPrivacy, "#/ailog":viewAiLog, "#/lab":viewLab, "#/admin":viewAdmin, "#/feedback":viewFeedback}[page] || viewHome)();
   renderMap(); if (aiOpen) renderChips();
   document.querySelectorAll("#bottomNav [data-nav]").forEach(b => b.classList.toggle("on", (b.dataset.nav === "home" && !mm && page !== "#/progress") || (b.dataset.nav === "progress" && page === "#/progress") || (b.dataset.nav === "modules" && !!mm)));
   if (!mm || !mm[2]) { scrollTo({top:0}); A("#view", {opacity:[0,1], y:[10,0]}, {duration:.35, ease:[.22,1,.36,1]}); }
@@ -9119,7 +9317,7 @@ window.onBoardChange = () => { renderWho(); };
 /* ============ START ============ */
 applySettings(); applyDevice();
 if (!apiReady()) $("#banner").innerHTML = `<div class="banner">Preview mode: progress is saved on this device only. Uploads and Proto need the course server.</div>`;
-if (user){ api("access", {device, userAgent:navigator.userAgent.slice(0,140), page:"open", board:getBoard()}); flushQueue(); }
+if (user){ api("access", {device, userAgent:navigator.userAgent.slice(0,140), page:"open", board:getBoard()}).then(r => { if (r && r.ok && user && !!r.admin !== !!user.admin){ user.admin = !!r.admin; rememberUser(); route(); } }); flushQueue(); }
 lastRouteKey = location.hash.split("?")[0];
 route();
 

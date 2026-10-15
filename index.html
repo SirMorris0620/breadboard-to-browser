@@ -9,7 +9,8 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2317483B'/%3E%3Ccircle cx='10' cy='11' r='2.4' fill='%238FD1B8'/%3E%3Ccircle cx='10' cy='21' r='2.4' fill='%238FD1B8'/%3E%3Cpath d='M14 16h4' stroke='%23C8653A' stroke-width='3'/%3E%3Crect x='18' y='8' width='9' height='16' rx='2' fill='none' stroke='%23E8B84A' stroke-width='2.4'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<script src="https://cdn.jsdelivr.net/npm/motion@13/dist/motion.js"></script>
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<script src="https://cdn.jsdelivr.net/npm/motion@13.4.4/dist/motion.js" integrity="sha384-beqhCQg6oRAGDM2vrWlhEoFHx4bUtScL926sTbxei5Ub1E+HWLMh2CdHljbCD+qn" crossorigin="anonymous"></script>
 <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -1336,7 +1337,9 @@ table.t tr.new td{background:color-mix(in srgb,var(--ok) 16%,var(--surface))}tab
 .btn:active{transform:translateY(1px)}
 .btn.primary:hover{background:color-mix(in srgb,var(--navy) 88%,#000);border-color:color-mix(in srgb,var(--navy) 88%,#000)}
 a{text-underline-offset:2px;text-decoration-thickness:1px}
-table.t{border-collapse:separate;border-spacing:0;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+table.t{display:table;width:100%;border-collapse:separate;border-spacing:0;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.tscroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0;max-width:100%}
+.tscroll>table.t{margin:0}
 table.t th,table.t td{border:0;border-bottom:1px solid var(--line)}
 table.t th+th,table.t td+td{border-left:1px solid var(--line)}
 table.t tr:last-child td{border-bottom:0}
@@ -1417,6 +1420,37 @@ table.t tr:nth-child(even) td{background:color-mix(in srgb,var(--bg) 60%,var(--s
 .known-x{align-self:center}
 .linkbtn{background:none;border:0;color:var(--teal);font:inherit;font-weight:700;cursor:pointer;padding:6px 0;text-decoration:underline;text-underline-offset:2px}
 .known-note{font-size:.82rem;margin-top:10px}
+.auth-banner{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:center}.adm-err summary{cursor:pointer;margin:6px 0}
+/* ===== pre-test / post-test / certificate ===== */
+.t-card{max-width:820px}
+.t-facts{display:flex;flex-wrap:wrap;gap:8px 20px;padding:0;list-style:none;margin:10px 0}
+.t-facts li{background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:4px 12px;font-size:.92rem;max-width:none}
+.t-cta{display:block;margin:0 0 14px;background:linear-gradient(120deg,var(--signal),color-mix(in srgb,var(--signal) 70%,var(--amber)))!important;border-color:transparent!important}
+.t-run{max-width:820px}
+.t-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.t-q{font-size:1.25rem;line-height:1.4;margin:18px 0 14px}
+.t-opts{display:grid;gap:8px}
+.t-opt{display:flex;gap:12px;align-items:center;border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;cursor:pointer;background:var(--surface);transition:border-color .15s,background .15s}
+.t-opt:hover{border-color:var(--teal)}
+.t-opt input{position:absolute;opacity:0}
+.t-l{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;border:1.5px solid var(--line);font-weight:800;flex:none;font-size:.9rem}
+.t-opt:has(input:checked){border-color:var(--teal);background:color-mix(in srgb,var(--teal) 10%,var(--surface))}
+.t-opt:has(input:checked) .t-l{background:var(--teal);border-color:var(--teal);color:#fff}
+.t-opt:has(input:focus-visible){outline:3px solid var(--amber)}
+.t-idk{border-style:dashed;color:var(--muted)}
+.t-nav{justify-content:space-between;margin-top:16px}
+.t-dots{display:flex;flex-wrap:wrap;gap:5px;margin-top:14px}
+.t-dot{width:30px;height:30px;border-radius:8px;border:1px solid var(--line);background:var(--bg);font-size:.75rem;cursor:pointer;color:var(--muted)}
+.t-dot.done{background:color-mix(in srgb,var(--teal) 22%,var(--surface));color:var(--ink)}
+.t-dot.on{border:2px solid var(--signal);color:var(--ink);font-weight:800}
+.t-score{display:flex;gap:20px;align-items:center;flex-wrap:wrap}
+.t-big{font-size:3.4rem;font-weight:800;line-height:1;color:var(--navy)}.t-big span{font-size:1.4rem;color:var(--muted)}
+.t-review{display:grid;gap:10px;padding-left:1.4em}
+.t-review li{border:1px solid var(--line);border-radius:10px;padding:10px 12px;background:var(--surface);max-width:none}
+.t-review li.ok{border-left:5px solid var(--ok)}.t-review li.no{border-left:5px solid var(--bad)}
+.t-review p{margin:.3em 0}
+.cert-tools{justify-content:center}
+@media print{body.printing-cert #view>*:not(#certSheet){display:none!important}body.printing-cert .banner,body.printing-cert #banner{display:none!important}body.printing-cert #view{padding:0!important}body.printing-cert .cert{max-width:none}@page{size:landscape;margin:12mm}}
 
 </style>
 </head>
@@ -1485,7 +1519,8 @@ const CONFIG = {
   IDLE_MINUTES: 5,
   MAX_UPLOAD_MB: 10,
   AI_MIN_AGE: 0,          // 0 = no age limit; keep the same as AI_MIN_AGE in Code.gs
-  LOCK_UNITS: true        // true = a unit opens only after every module in the earlier units is complete (admins are never locked)
+  LOCK_UNITS: true,       // true = a unit opens only after every module in the earlier units is complete (admins are never locked)
+  REQUIRE_PRETEST: true   // true = learners take the pre-test before Module 1.1 (admins are never locked)
 };
 
 /* ============ STORAGE (safe) ============ */
@@ -1501,33 +1536,64 @@ let prog = Object.assign(blankProg(), store.get(pkey(), {}));
 function saveProg(){ store.set(pkey(), prog); }
 const sessionId = Math.random().toString(36).slice(2) + Date.now().toString(36);
 
-/* ============ API with offline queue ============ */
+/* ============ API with retries and an offline queue ============ */
 const apiReady = () => /^https:\/\/script\.google\.com\//.test(CONFIG.API_URL);
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+const NO_RETRY = {ask:1, upload:1, lookup:1, verify:1, register:1, adminLogin:1};   // never repeat: they cost money, send email, or create things
+/* POST to the course server. Retries (with backoff) when the network drops or the server is busy. */
+async function post(payload, retries){
+  let last = {ok:false, error:"network"};
+  for (let i = 0; i <= retries; i++){
+    if (i) await sleep(800 * Math.pow(2.5, i - 1) + Math.random() * 400);
+    try {
+      const res = await fetch(CONFIG.API_URL, {method:"POST", headers:{"Content-Type":"text/plain;charset=utf-8"}, body:JSON.stringify(payload)});
+      let j; try { j = await res.json(); } catch(e){ last = {ok:false, error:"busy"}; continue; }   // Google's HTML error page = overloaded
+      if (j && (j.error === "busy" || j.error === "server_busy")){ last = j; continue; }
+      return j;
+    } catch(e){ last = {ok:false, error:"network"}; }
+  }
+  return last;
+}
+let authLostShown = false;
 async function api(action, data, queueIfFail = true){
   if (!user || !apiReady()) return {ok:false, offline:true};
-  const body = JSON.stringify(Object.assign({action, email:user.email, sessionId}, data));
-  try{
-    const r = await fetch(CONFIG.API_URL, {method:"POST", headers:{"Content-Type":"text/plain;charset=utf-8"}, body});
-    return await r.json();
-  }catch(e){
-    if (queueIfFail && action !== "upload"){ const q = store.get("b2b_queue", []); q.push(body); store.set("b2b_queue", q.slice(-200)); }
-    return {ok:false, error:"network"};
-  }
+  const r = await post(Object.assign({action, token:user.token || "", sessionId}, data), NO_RETRY[action] ? 0 : 2);
+  if (r.error === "auth_required"){ onAuthLost(); return r; }
+  if ((r.error === "network" || r.error === "busy") && queueIfFail && !NO_RETRY[action]){ const q = store.get("b2b_queue", []); q.push({action, data}); store.set("b2b_queue", q.slice(-200)); }
+  return r;
 }
 async function apiPublic(action, data){
   if (!apiReady()) return {ok:false, offline:true};
-  try { return await (await fetch(CONFIG.API_URL, {method:"POST", headers:{"Content-Type":"text/plain;charset=utf-8"}, body:JSON.stringify(Object.assign({action}, data))})).json(); }
-  catch(e){ return {ok:false, error:"network"}; }
+  return post(Object.assign({action}, data), NO_RETRY[action] ? 0 : 2);
+}
+/* The server no longer accepts this device's session (older version, or signed out elsewhere): ask the learner to confirm their email. */
+function onAuthLost(){
+  if (!user || authLostShown) return; authLostShown = true;
+  const email = user.email, all = store.get("b2b_profiles", {});
+  if (all[email]) { delete all[email].token; store.set("b2b_profiles", all); }
+  user.token = ""; store.set("b2b_user", user);
+  if (window.showAuthBanner) window.showAuthBanner(email);
 }
 async function flushQueue(){
-  if (!apiReady()) return;
+  if (!apiReady() || !user || !user.token) return;
   const q = store.get("b2b_queue", []); if (!q.length) return;
   store.set("b2b_queue", []);
-  for (const body of q){
-    try{ await fetch(CONFIG.API_URL, {method:"POST", headers:{"Content-Type":"text/plain;charset=utf-8"}, body}); }
-    catch(e){ const r = store.get("b2b_queue", []); r.push(body); store.set("b2b_queue", r); }
+  for (const item of q){
+    if (!item || !item.action) continue;   // skip entries from older versions
+    const r = await post(Object.assign({action:item.action, token:user.token, sessionId}, item.data), 1);
+    if (r.error === "network" || r.error === "busy"){ const rest = store.get("b2b_queue", []); rest.push(item); store.set("b2b_queue", rest); }
+    if (r.error === "auth_required"){ onAuthLost(); break; }
   }
 }
+/* Client error reporting: uncaught errors go to the Errors tab (at most 10 per visit, duplicates skipped). */
+const errSeen = new Set(); let errBuf = [];
+function reportError(where, message, detail){
+  const key = where + "|" + message; if (errSeen.has(key) || errSeen.size >= 10) return; errSeen.add(key);
+  errBuf.push({where:String(where).slice(0, 80), message:String(message).slice(0, 500), detail:String(detail || "").slice(0, 1500)});
+  clearTimeout(reportError.t); reportError.t = setTimeout(() => { const errors = errBuf; errBuf = []; if (user && user.token) api("clientError", {errors, userAgent:navigator.userAgent.slice(0, 140)}, false); }, 2000);
+}
+addEventListener("error", e => { if (e.message) reportError((location.hash || "#/") + " " + (e.filename || "").split("/").pop() + ":" + (e.lineno || 0), e.message, e.error && e.error.stack); });
+addEventListener("unhandledrejection", e => { const x = e.reason || {}; reportError(location.hash || "#/", "Unhandled promise: " + (x.message || x), x.stack); });
 let evBuffer = [];
 function logEvent(moduleId, itemId, type, value){
   evBuffer.push({ts:Date.now(), moduleId, itemId, type, value:String(value == null ? "" : value).slice(0, 400)});
@@ -1546,13 +1612,17 @@ setInterval(() => {
   if (Date.now() - lastActive > CONFIG.IDLE_MINUTES * 60000) return;
   const m = CONFIG.HEARTBEAT_SECONDS / 60;
   prog.minutes = (prog.minutes || 0) + m; saveProg();
-  api("heartbeat", {minutes:m, moduleId:currentModule});
+  pendingMinutes += m; if (pendingMinutes >= 3) sendMinutes();   // one request every 3 active minutes keeps server load low
 }, CONFIG.HEARTBEAT_SECONDS * 1000);
+let pendingMinutes = 0;
+function sendMinutes(){ if (!pendingMinutes) return; const m = Math.min(pendingMinutes, 10); pendingMinutes = 0; api("heartbeat", {minutes:m, moduleId:currentModule}, false); }
 setInterval(flushQueue, 120000);
 addEventListener("online", flushQueue);
-document.addEventListener("visibilitychange", () => { if (document.visibilityState === "hidden") sendEvents(); });
+document.addEventListener("visibilitychange", () => { if (document.visibilityState === "hidden"){ sendEvents(); sendMinutes(); } });
 
 /* ============ HELPERS ============ */
+/* One CSV cell. Text starting with = + - @ gets a leading ' so Excel/Sheets will not run it as a formula (CSV injection). */
+const csvCell = v => { let s = String(v == null ? "" : v); if (/^[=+\-@\t\r]/.test(s)) s = "'" + s; return '"' + s.replace(/"/g, '""') + '"'; };
 const $ = (s, el = document) => el.querySelector(s);
 const $$ = (s, el = document) => [...el.querySelectorAll(s)];
 const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
@@ -8510,6 +8580,47 @@ const LAB_INDEX = [
 ];
 
 </script>
+<script>/* ==== content/tests.js ==== */
+/* ============ PRE-TEST AND POST-TEST (the same 30 items, so learning gains can be compared) ============
+   a = index of the correct option. build.py copies the answer key into backend/Code.gs, which scores tests on the server. */
+const TEST = {
+  version: "2026-10-15",
+  minutes: 30,
+  items: [
+  {u:1, q:"Which description fits an Internet of Things (IoT) device best?", o:["Any device that has a touchscreen","A computer used only for browsing websites","A cloud server that stores spreadsheets","A physical object with sensors or actuators that connects to a network to share data"], a:3, e:"IoT devices sense or act in the physical world and share data over a network."},
+  {u:1, q:"How is a UN Sustainable Development Goal (SDG) target different from a goal?", o:["A target is a specific, measurable outcome under a goal, such as Target 3.9 on pollution","A target is a broad aim; a goal is specific","Targets are written by each school","There is no difference"], a:0, e:"The 17 goals contain 169 targets; each target is a specific outcome with indicators to measure it."},
+  {u:1, q:"In the PARTS prompting framework, what does the “P” stand for?", o:["Persona","Purpose","Process","Program"], a:0, e:"PARTS = Persona, Act, Recipient, Theme, Structure."},
+  {u:1, q:"Before asking an AI tool to help with a coding challenge, what is this course's first rule?", o:["Ask the AI for the full solution","Skip the challenge","Attempt the task yourself first","Copy code from a classmate"], a:2, e:"Attempt first: trying it yourself is how you learn, and it helps you judge the AI's answer."},
+  {u:1, q:"Which board in this course uses 5 V logic on its digital pins?", o:["Arduino Uno R4 WiFi","ESP8266 NodeMCU","ESP32-S3-DevKitC-1","All three"], a:0, e:"The Uno R4 WiFi uses 5 V logic; the ESP32-S3 and ESP8266 use 3.3 V."},
+  {u:1, q:"In an Arduino sketch, when does setup() run?", o:["Once every second","Only when there is an error","Once, when the board starts or resets","Over and over, forever"], a:2, e:"setup() runs once; loop() then repeats forever."},
+  {u:1, q:"What happens to your sketch before it runs on the board?", o:["The board reads the text line by line","It is converted to Python","It runs in the browser","It is compiled into machine code for that board's processor, then uploaded"], a:3, e:"The compiler turns C++ into machine code for the specific chip; the IDE then uploads it."},
+  {u:1, q:"Why does the course prefer millis() over delay() for timing?", o:["millis() is more accurate to the nanosecond","millis() does not stop the rest of the program from running","delay() does not work on ESP boards","millis() uses less battery"], a:1, e:"delay() blocks everything; checking millis() lets the board do other work while it waits."},
+  {u:2, q:"A 220 Ω resistor is connected directly across 3.3 V. About how much current flows?", o:["1.5 mA","15 mA","0.15 mA","150 mA"], a:1, e:"Ohm's law: I = V ÷ R = 3.3 ÷ 220 ≈ 0.015 A = 15 mA."},
+  {u:2, q:"Why does an LED need a resistor in series?", o:["To make it brighter","To store energy","To limit the current so the LED and the pin are not damaged","To change its color"], a:2, e:"Without a resistor, the current is limited only by the LED and pin, which can damage both."},
+  {u:2, q:"On a standard breadboard, holes a–e in the same numbered row are…", o:["Connected to each other","Connected to holes f–j in that row","Not connected at all","Connected to the power rail"], a:0, e:"Each row's a–e strip is one connection; the center channel separates it from f–j."},
+  {u:2, q:"Why does the HC-SR04's ECHO pin need a voltage divider on an ESP32-S3?", o:["It makes the sensor more accurate","The sensor needs more current","It is only needed outdoors","ECHO outputs 5 V, but ESP32-S3 pins accept only 3.3 V"], a:3, e:"A divider (e.g. 1 kΩ and 2 kΩ) scales the 5 V signal to a safe level for a 3.3 V pin."},
+  {u:2, q:"A bare 4-pin DHT22 (not on a module) needs which extra part?", o:["A 220 Ω resistor on VCC","A 10 kΩ pull-up resistor between DATA and VCC","A capacitor on GND","Nothing"], a:1, e:"The DATA line needs a pull-up. 3-pin modules already include it."},
+  {u:2, q:"The HC-SR04 echo pulse lasts 1,160 µs. About how far is the object? (Sound travels about 0.0343 cm per µs.)", o:["About 116 cm","About 20 cm","About 10 cm","About 40 cm"], a:1, e:"Distance = time × speed ÷ 2 (there and back) = 1160 × 0.0343 ÷ 2 ≈ 20 cm."},
+  {u:2, q:"What happens to a photoresistor (LDR) when more light falls on it?", o:["Its resistance goes down","Its resistance goes up","Its voltage rating changes","Nothing"], a:0, e:"More light frees more charge carriers, so the resistance drops."},
+  {u:2, q:"Which statement about the MQ-135 is correct?", o:["It needs no power","It measures temperature","It gives certified CO₂ readings in ppm out of the box","It needs warm-up time and is best used as a relative air-quality indicator"], a:3, e:"Its heated sensing layer needs warm-up, and without calibration it shows relative change, not certified values."},
+  {u:2, q:"Right after power-up, a GPS module has no fix yet. What should your sketch do?", o:["Print 0, 0 as the location","Wait and print coordinates only when the fix is valid","Restart the board every second","Print the last coordinates it remembers"], a:1, e:"Check that the location is valid before using it; a first fix can take a minute or more outdoors."},
+  {u:3, q:"Apps Script answers your board with status code 302. What does it mean?", o:["Access denied","The server crashed","The data was rejected","The request is being redirected to another address"], a:3, e:"Apps Script always redirects to script.googleusercontent.com; the row is usually already saved."},
+  {u:3, q:"Which of these is valid JSON?", o:["{temp_c: 29.4}","{\"temp_c\": 29.4}","{\"temp_c\": 29.4,}","{'temp_c': 29.4}"], a:1, e:"JSON names need double quotes, and trailing commas are not allowed."},
+  {u:3, q:"Why should your board send data with HTTPS rather than HTTP?", o:["It encrypts the request, so others on the network cannot read your API key and data","It does not need Wi-Fi","It uses less memory","It is faster"], a:0, e:"TLS encryption protects confidentiality and integrity, and the certificate proves the server's identity."},
+  {u:3, q:"You changed Code.gs and saved, but the board still gets the old behavior. What is the most likely reason?", o:["The Sheet is full","The board needs a new USB cable","You did not deploy a new version of the web app","Apps Script only updates at midnight"], a:2, e:"Saving is not enough: Deploy → Manage deployments → Edit → New version."},
+  {u:3, q:"In doGet(e), how do you read the URL parameter temp_c?", o:["request.get('temp_c')","doGet.temp_c","e.parameter.temp_c","e.temp_c"], a:2, e:"URL parameters arrive in e.parameter, as text."},
+  {u:3, q:"Why does the course's Code.gs use LockService before writing?", o:["So two requests arriving at the same time do not overwrite each other","To make the Sheet read-only","To hide the data","To speed up the internet"], a:0, e:"A lock makes simultaneous runs take turns, preventing lost rows (a race condition)."},
+  {u:3, q:"In the “long” (tidy) data format used by the course, each row holds…", o:["All sensors for one moment, one column per sensor","One day of data","One single reading: timestamp, device_id, sensor, value","One device's settings"], a:2, e:"Long format: one row per reading. It handles any number of sensors without changing the columns."},
+  {u:3, q:"Which is the best advice for dashboard KPIs?", o:["Hide the time of the last update","Show 3–5 numbers with units and limits, tied to a decision","Show every number you have","Use only pie charts"], a:1, e:"Few, decision-focused KPIs with context (units, limits, freshness) can be read at a glance."},
+  {u:4, q:"In the engineering design process, a test shows your prototype misses a criterion. What comes next?", o:["Refine the design and test again","Remove the criterion","Present it anyway","Start a different project"], a:0, e:"Refine and re-test: most engineering happens in this loop."},
+  {u:4, q:"In MoSCoW prioritization, a “Must” requirement is…", o:["A requirement for a future version","Essential: without it, the prototype does not count as working","Something nice to have","Something you will not do"], a:1, e:"Must, Should, Could, Won't (this time): Musts define a working prototype."},
+  {u:4, q:"What is incremental integration?", o:["Adding and testing one part at a time","Buying parts one at a time","Connecting every part at once, then testing","Writing all the code before wiring"], a:0, e:"Add one sensor or feature, test it, then add the next, so faults are easy to find."},
+  {u:4, q:"Your prototype logs RFID card scans of students. What should you do?", o:["Collect only what you need, get consent, and protect and limit access to the data","Collect as much data as possible","Post the log publicly","Nothing: card numbers are not personal data"], a:0, e:"Card scans link to people, so they are personal data: minimize, get consent, and secure it."},
+  {u:4, q:"You want an AI tool to help debug your sketch. What must you do first?", o:["Paste the sketch exactly as it is","Add your full name and school","Replace the Wi-Fi password and API key with placeholders","Nothing"], a:2, e:"Never share real passwords or keys in AI chats, screenshots, or public code."}
+  ]
+};
+
+</script>
 <script>/* ==== js/engine.js ==== */
 /* ============ MOTION LAYER ============ */
 const M = window.Motion || null;
@@ -8570,6 +8681,9 @@ function modulePct(m){ if (!m.sections) return 0; const req = m.sections.filter(
 function unitOf(id){ return COURSE.find(u => u.modules.some(m => m.id === id)); }
 
 /* ============ RENDERING ============ */
+/* Tables fill the column; a table wider than the screen scrolls inside its own wrapper instead of stretching the page. */
+function wrapTables(root){ (root || document).querySelectorAll("table.t").forEach(t => { if (t.parentElement && !t.parentElement.classList.contains("tscroll")){ const w = document.createElement("div"); w.className = "tscroll"; t.parentNode.insertBefore(w, t); w.appendChild(t); } }); }
+if ("MutationObserver" in window) new MutationObserver(ms => { if (!wrapTables.p && ms.some(m => m.addedNodes.length)) wrapTables.p = setTimeout(() => { wrapTables.p = 0; wrapTables(document.getElementById("view")); }, 120); }).observe(document.documentElement, {childList:true, subtree:true});
 function ring(pct, size){ size = size || 24; const r = size*0.375, c = 2*Math.PI*r, sw = size/8;
   return `<svg class="ring" width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" aria-hidden="true"><circle cx="${size/2}" cy="${size/2}" r="${r}" fill="none" stroke="var(--line)" stroke-width="${sw}"/><circle class="ring-fg" data-c="${c}" data-p="${pct}" cx="${size/2}" cy="${size/2}" r="${r}" fill="none" stroke="var(--teal)" stroke-width="${sw}" stroke-dasharray="${c}" stroke-dashoffset="${c*(1-pct)}" transform="rotate(-90 ${size/2} ${size/2})" stroke-linecap="round"/></svg>`; }
 function animateRings(root){ root.querySelectorAll(".ring-fg").forEach(c => { const C = +c.dataset.c, p = +c.dataset.p; if (!p) return; A(c, {strokeDashoffset:[C, C*(1-p)]}, {duration:1.1, ease:[.22,1,.36,1]}); }); }
@@ -8578,9 +8692,10 @@ let pillTop = null;
 function renderMap(){
   const cur = (location.hash.match(/^#\/m\/([^?]+)/) || [])[1], h = location.hash;
   const link = (href, label, on) => `<a class="mod-link ${on ? "active" : ""}" href="${href}">${label}</a>`;
-  $("#map").innerHTML = `<div class="pill" id="pill"></div>` + `<div class="unit"><div class="unit-title">Start here</div>${link("#/overview", `<span class="mapicon">◎</span><span>Course overview</span>`, h === "#/overview")}${link("#/home", `<span class="mapicon">⌂</span><span>Course home</span>`, !cur && (h === "#/home" || h === ""))}</div>` +
-    COURSE.map(u => { const lk = unitLocked(u); return `<div class="unit${lk ? " unit-locked" : ""}"><div class="unit-title">${lk ? lockIcon + " " : ""}${esc(u.title)}</div><div class="unit-sub">${lk ? "Finish the earlier units to unlock" : esc(u.sub)}</div>
+  $("#map").innerHTML = `<div class="pill" id="pill"></div>` + `<div class="unit"><div class="unit-title">Start here</div>${link("#/overview", `<span class="mapicon">◎</span><span>Course overview</span>`, h === "#/overview")}${link("#/home", `<span class="mapicon">⌂</span><span>Course home</span>`, !cur && (h === "#/home" || h === ""))}${link("#/pretest", `<span class="mapicon">${preDone() ? "✓" : "①"}</span><span>Pre-test</span>`, h === "#/pretest")}</div>` +
+    COURSE.map(u => { const lk = unitLocked(u); return `<div class="unit${lk ? " unit-locked" : ""}"><div class="unit-title">${lk ? lockIcon + " " : ""}${esc(u.title)}</div><div class="unit-sub">${lk ? (COURSE.indexOf(u) === 0 || !preDone() ? "Take the pre-test to unlock" : "Finish the earlier units to unlock") : esc(u.sub)}</div>
     ${u.modules.map(m => `<a class="mod-link ${cur===m.id?"active":""}${lk ? " is-locked" : ""}" href="#/m/${m.id}" ${lk ? `aria-label="${esc(m.id + " " + m.title)} (locked)"` : ""}>${lk ? `<span class="mapicon">${lockIcon}</span>` : ring(modulePct(m))}<span>${esc(m.id)} ${esc(m.title)}</span></a>`).join("")}</div>`; }).join("") +
+    `<div class="unit"><div class="unit-title">Finish line</div>${link("#/posttest", `<span class="mapicon">${postPassed() ? "✓" : allModulesDone() || bypassLocks() ? "○" : lockIcon}</span><span>Post-test</span>`, h === "#/posttest")}${link("#/certificate", `<span class="mapicon">${tGet().cert ? "✓" : postPassed() || bypassLocks() ? "○" : lockIcon}</span><span>Certificate</span>`, h === "#/certificate")}</div>` +
     `<div class="map-foot">${link("#/lab", "Sandbox lab", h === "#/lab")}${link("#/ailog", "My AI-use log", h === "#/ailog")}${link("#/progress", "My progress", h === "#/progress")}${link("#/glossary", "Glossary", h === "#/glossary")}${link("#/references", "References (APA)", h === "#/references")}${link("#/privacy", "Privacy", h === "#/privacy")}${link("#/feedback", "Course feedback", h === "#/feedback")}<button class="mod-link fb-link" type="button" onclick="openGeneralFeedback()">Report a problem or idea</button>${isAdmin() || adminSess() ? link("#/admin", "Teacher dashboard", h === "#/admin") : ""}</div>`;
   const a = $("#map .mod-link.active"), pill = $("#pill");
   if (a && pill){ const top = a.offsetTop, hh = a.offsetHeight; pill.style.height = hh + "px";
@@ -8593,9 +8708,11 @@ function viewHome(){
   const next = mods.find(m => modulePct(m) < 1) || mods[mods.length-1];
   const b = BOARDS[getBoard()];
   $("#view").innerHTML = `<p class="crumb">Course home</p><h1>Welcome, ${esc(user.givenName || String(user.name || "maker").split(" ")[0])}</h1>
+   ${!preDone() && !bypassLocks() ? `<a class="spot continue t-cta" href="#/pretest"><span class="lbl">Step 1</span><h3>Take the pre-test</h3><span class="lbl">${TEST.items.length} questions • about ${TEST.minutes} minutes • not graded • unlocks Module 1.1</span></a>` : ""}
+   ${allModulesDone() && !tGet().cert ? `<a class="spot continue t-cta" href="${postPassed() ? "#/certificate" : "#/posttest"}"><span class="lbl">Finish line</span><h3>${postPassed() ? "Get your certificate" : "Take the post-test"}</h3><span class="lbl">${postPassed() ? "You passed the post-test" : `Pass with ${tGet().passPct}% to earn your certificate`}</span></a>` : ""}
    <div class="bento">
-    <a class="spot continue span4" href="#/m/${next.id}"><span class="lbl">${modulePct(next) ? "Continue where you left off" : "Start here"}</span><h3>Module ${next.id}: ${esc(next.title)}</h3>
-     <span class="lbl">about ${next.minutes} minutes • ${Math.round(modulePct(next)*100)}% done</span></a>
+    ${!preDone() && !bypassLocks() ? `<div class="spot span4 t-wait"><span class="lbl">Then</span><h3>Module 1.1 opens after the pre-test</h3><span class="lbl">Your progress, board, and tools are below.</span></div>` : `<a class="spot continue span4" href="#/m/${next.id}"><span class="lbl">${modulePct(next) ? "Continue where you left off" : "Start here"}</span><h3>Module ${next.id}: ${esc(next.title)}</h3>
+     <span class="lbl">about ${next.minutes} minutes • ${Math.round(modulePct(next)*100)}% done</span></a>`}
     <div class="spot span2"><div class="big" data-tick="${done}">0</div><div class="lbl">of ${mods.length} modules complete</div></div>
     <div class="spot span3"><div class="big" data-tick="${((prog.minutes||0)/60).toFixed(1)}" data-dec="1" data-suf=" h">0</div><div class="lbl">active learning time on this device</div></div>
     <div class="spot span3 boardspot"><div class="lbl">Your board</div><h3>${esc(b.name)}</h3><div class="controls">${Object.values(BOARDS).map(x => `<button class="chip ${x.key === b.key ? "sel" : ""}" data-setboard="${x.key}">${esc(x.short)}</button>`).join("")}</div><span class="explain">Wiring tables and code open on this board first.</span></div>
@@ -8772,10 +8889,14 @@ addEventListener("orientationchange", () => setTimeout(applyDevice, 200));
 /* --- unit locks: a unit opens when every module in all earlier units is complete. Admins are never locked. --- */
 const unitDone = u => u.modules.every(m => modulePct(m) === 1);
 const bypassLocks = () => !CONFIG.LOCK_UNITS || isAdmin() || !!adminSess();
-function unitLocked(u){ if (!u || bypassLocks()) return false; const i = COURSE.indexOf(u); return i > 0 && !COURSE.slice(0, i).every(unitDone); }
+function unitLocked(u){ if (!u || bypassLocks()) return false; const i = COURSE.indexOf(u); if (i === 0) return CONFIG.REQUIRE_PRETEST !== false && !preDone(); return !COURSE.slice(0, i).every(unitDone) || (CONFIG.REQUIRE_PRETEST !== false && !preDone()); }
 const modLocked = id => unitLocked(unitOf(id));
 const lockIcon = `<svg class="lock-i" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>`;
 function viewLocked(id){
+  if (CONFIG.REQUIRE_PRETEST !== false && !preDone()){
+    $("#view").innerHTML = `<section class="lock-page"><div class="card lock-card"><div class="lock-badge">${lockIcon.replace('width="14" height="14"', 'width="28" height="28"')}</div>
+      <p class="crumb">Start here</p><h1>Take the pre-test first</h1><p>Before Module 1.1, answer ${TEST.items.length} quick questions so you can see how much you learn by the end. It is not graded.</p>
+      <div class="controls"><a class="btn primary" href="#/pretest">Start the pre-test</a><a class="btn" href="#/overview">Course overview</a></div></div></section>`; return; }
   const m = MODULES[id], u = unitOf(id), i = COURSE.indexOf(u), todo = [].concat(...COURSE.slice(0, i).map(x => x.modules)).filter(x => modulePct(x) < 1);
   $("#view").innerHTML = `<section class="lock-page"><div class="card lock-card">
     <div class="lock-badge">${lockIcon.replace('width="14" height="14"', 'width="28" height="28"')}</div>
@@ -8875,12 +8996,178 @@ function adminFeedbackHTML(fb){
 }
 function wireAdminFeedback(fb){
   const q = $("#fbQ"); if (q) q.oninput = () => { const t = q.value.toLowerCase(); $$("#fbList .fb-item").forEach(x => x.hidden = t && !x.textContent.toLowerCase().includes(t)); };
-  const c = $("#fbCsv"); if (c) c.onclick = () => { const H = ["at","email","kind","moduleId","page","rating","difficulty","scores","nps","comment","improve"]; downloadText("feedback.csv", [H.join(",")].concat((fb || []).map(f => H.map(h => `"${String(f[h] == null ? "" : f[h]).replace(/"/g, '""')}"`).join(","))).join("\n"), "text/csv"); };
+  const c = $("#fbCsv"); if (c) c.onclick = () => { const H = ["at","email","kind","moduleId","page","rating","difficulty","scores","nps","comment","improve"]; downloadText("feedback.csv", [H.join(",")].concat((fb || []).map(f => H.map(h => csvCell(f[h])).join(","))).join("\n"), "text/csv"); };
 }
 
 /* --- email recognition: profiles used on this device --- */
 const knownProfiles = () => Object.values(store.get("b2b_profiles", {})).filter(p => p && p.email).sort((a, b) => (b.lastUsed || 0) - (a.lastUsed || 0));
 function forgetProfile(email){ const all = store.get("b2b_profiles", {}); delete all[email]; store.set("b2b_profiles", all); }
+
+/* admin: health and errors */
+function adminHealthHTML(r){
+  const E = r.errors || [];
+  return `<h2>Health and errors</h2>
+   <div class="bento"><div class="spot span2"><div class="big">${r.errors24h == null ? "–" : r.errors24h}</div><div class="lbl">errors in the last 24 hours</div></div>
+    <div class="spot span2"><div class="big">${r.emailQuota == null ? "–" : r.emailQuota}</div><div class="lbl">sign-in code emails left today</div></div>
+    <div class="spot span2"><div class="big" style="font-size:1.3rem">${esc(r.version || "older")}</div><div class="lbl">server version (Code.gs)</div></div></div>
+   ${E.length ? `<details class="adm-err"><summary><b>Latest ${E.length} errors</b> <span class="explain">(newest first; full details in the Errors tab of your Sheet)</span></summary><div class="adm-tablewrap"><table class="t"><tr><th>When</th><th>Source</th><th>Where</th><th>Message</th><th>Learner</th></tr>${E.slice(0, 100).map(x => `<tr><td>${esc(x.at)}</td><td>${esc(x.source)}</td><td class="mono">${esc(x.where)}</td><td>${esc(x.message)}</td><td>${esc(x.email)}</td></tr>`).join("")}</table></div></details>` : `<p class="explain">No errors recorded. 🎉</p>`}`;
+}
+
+</script>
+<script>/* ==== js/assess.js ==== */
+/* ============ PRE-TEST, POST-TEST, AND CERTIFICATE ============ */
+const CERT_PASS_DEFAULT = 70, POST_ATTEMPTS_DEFAULT = 3;
+const tkey = () => "b2b_tests_" + (user ? user.email : "g");
+const tGet = () => Object.assign({pre:null, post:[], cert:null, passPct:CERT_PASS_DEFAULT, maxAttempts:POST_ATTEMPTS_DEFAULT}, store.get(tkey(), {}));
+const tSave = t => store.set(tkey(), t);
+/* merge what the server knows (another device may have taken a test) */
+function mergeTests(s){ if (!s || !user) return; const t = tGet();
+  if (s.pre && !t.pre) t.pre = s.pre;
+  if (s.post && s.post.length > t.post.length) t.post = s.post;
+  if (s.cert) t.cert = s.cert;
+  if (s.passPct != null) t.passPct = s.passPct; if (s.maxAttempts) t.maxAttempts = s.maxAttempts; tSave(t); }
+const preDone = () => !!tGet().pre;
+const allModulesDone = () => Object.values(MODULES).every(m => modulePct(m) === 1);
+const postBest = () => Math.max(-1, ...tGet().post.map(p => +p.percent || 0));
+const postPassed = () => postBest() >= tGet().passPct;
+const attemptsLeft = () => Math.max(0, tGet().maxAttempts - tGet().post.length);
+const unitScores = ans => { const u = {}; TEST.items.forEach((it, i) => { u[it.u] = u[it.u] || [0, 0]; u[it.u][1]++; if (ans[i] === it.a) u[it.u][0]++; }); return u; };
+const UNIT_NAMES = {1:"Unit 1: Foundations", 2:"Unit 2: Arduino prototyping", 3:"Unit 3: Connecting to the web", 4:"Unit 4: Building the prototype"};
+
+function viewTest(kind){
+  const t = tGet(), isPre = kind === "pre", admin = isAdmin() || !!adminSess();
+  const head = `<p class="crumb">${isPre ? "Start here" : "Finish line"}</p><h1>${isPre ? "Pre-test" : "Post-test"}</h1>`;
+  if (isPre && t.pre && !admin) return testDone(kind, t.pre, null);
+  if (!isPre && !allModulesDone() && !admin){
+    const left = Object.values(MODULES).filter(m => modulePct(m) < 1);
+    $("#view").innerHTML = `${head}<div class="card t-card"><p>The post-test opens when you finish every module. You have <b>${left.length}</b> to go.</p><ul class="lock-list">${left.slice(0, 8).map(x => `<li><a href="#/m/${x.id}">${ring(modulePct(x), 22)}<span><b>${esc(x.id)}</b> ${esc(x.title)}</span><span class="lock-pct">${Math.round(modulePct(x) * 100)}%</span></a></li>`).join("")}</ul></div>`; animateRings($("#view")); return; }
+  if (!isPre && postPassed() && !admin) return testDone(kind, t.post[t.post.length - 1], null);
+  if (!isPre && !attemptsLeft() && !admin) return testDone(kind, t.post[t.post.length - 1], null);
+  $("#view").innerHTML = `${head}<div class="card t-card t-intro">
+    <p class="lede-mod">${isPre ? "Before you start, show what you already know. This is <b>not graded</b> and does not affect your progress: it is your starting point, so you can see how much you learn." : `You finished every module. Pass this test with <b>${t.passPct}%</b> or more to earn your certificate. You have <b>${attemptsLeft()}</b> attempt${attemptsLeft() === 1 ? "" : "s"}; your best score counts.`}</p>
+    <ul class="t-facts"><li><b>${TEST.items.length}</b> multiple-choice questions</li><li>About <b>${TEST.minutes}</b> minutes</li><li>${isPre ? "One attempt" : "Same questions as the pre-test"}</li></ul>
+    <div class="note"><b>Please work on your own:</b> no notes, no AI tools, no help from others. If you do not know an answer, choose <b>“I don't know yet”</b> rather than guessing. Honest answers make your learning gain meaningful${isPre ? "" : " and your certificate trustworthy"}.</div>
+    <div class="controls"><button class="btn primary big" id="tStart" type="button">Start the ${isPre ? "pre-test" : "post-test"}</button>${isPre ? "" : `<a class="btn" href="#/home">Review first</a>`}</div></div>`;
+  $("#tStart").onclick = () => runTest(kind);
+}
+function runTest(kind){
+  const N = TEST.items.length, ans = new Array(N).fill(null), t0 = Date.now(); let i = 0;
+  const draw = () => { const it = TEST.items[i], answered = ans.filter(a => a !== null).length;
+    $("#view").innerHTML = `<p class="crumb">${kind === "pre" ? "Pre-test" : "Post-test"}</p>
+     <div class="t-run card"><div class="t-top"><b>Question ${i + 1} of ${N}</b><span class="explain">${answered} answered</span></div>
+      <div class="meter"><i style="width:${(i + 1) / N * 100}%"></i></div>
+      <h2 class="t-q">${esc(it.q)}</h2>
+      <div class="t-opts" role="radiogroup" aria-label="Answer choices">${it.o.map((o, k) => `<label class="t-opt"><input type="radio" name="tq" value="${k}" ${ans[i] === k ? "checked" : ""}><span class="t-l">${"ABCD"[k]}</span><span>${esc(o)}</span></label>`).join("")}
+       <label class="t-opt t-idk"><input type="radio" name="tq" value="-1" ${ans[i] === -1 ? "checked" : ""}><span class="t-l">?</span><span>I don't know yet</span></label></div>
+      <div class="controls t-nav"><button class="btn" id="tBack" type="button" ${i ? "" : "disabled"}>← Back</button>${i < N - 1 ? `<button class="btn primary" id="tNext" type="button">Next →</button>` : `<button class="btn primary" id="tSubmit" type="button">Submit</button>`}</div>
+      <div class="t-dots" aria-label="Jump to a question">${TEST.items.map((_, k) => `<button type="button" class="t-dot ${k === i ? "on" : ""} ${ans[k] !== null ? "done" : ""}" data-k="${k}" aria-label="Question ${k + 1}">${k + 1}</button>`).join("")}</div>
+      <p class="err" id="tErr" role="alert"></p></div>`;
+    document.querySelectorAll('input[name="tq"]').forEach(x => x.onchange = () => { ans[i] = +x.value; document.querySelectorAll(".t-dot")[i].classList.add("done"); if (i < N - 1) setTimeout(() => { i++; draw(); }, 220); });
+    $("#tBack").onclick = () => { i--; draw(); };
+    if ($("#tNext")) $("#tNext").onclick = () => { i++; draw(); };
+    document.querySelectorAll(".t-dot").forEach(d => d.onclick = () => { i = +d.dataset.k; draw(); });
+    if ($("#tSubmit")) $("#tSubmit").onclick = async () => {
+      const blank = ans.map((a, k) => a === null ? k + 1 : 0).filter(Boolean);
+      if (blank.length){ $("#tErr").textContent = `Answer every question first (choose “I don't know yet” if needed). Missing: ${blank.slice(0, 10).join(", ")}${blank.length > 10 ? "…" : ""}.`; return; }
+      if (!confirm("Submit your answers? You cannot change them after this.")) return;
+      const final = ans.map(a => a === null ? -1 : a), seconds = Math.round((Date.now() - t0) / 1000);
+      $("#tSubmit").disabled = true; $("#tSubmit").textContent = "Submitting…";
+      const r = await api("test", {kind, answers:final, seconds, version:TEST.version}, false);
+      const local = final.reduce((n, a, k) => n + (a === TEST.items[k].a ? 1 : 0), 0);
+      if (!r.ok && !r.offline && r.error !== "network"){ $("#tSubmit").disabled = false; $("#tSubmit").textContent = "Submit";
+        $("#tErr").textContent = {not_eligible:"The server says not every module is complete yet. Open each module and check it shows 100%.", no_attempts:"You have used all your post-test attempts. Contact the course team.", bad_answers:"Something went wrong with your answers. Reload and try again."}[r.error] || "Could not submit (" + r.error + "). Check your connection and try again."; return; }
+      const res = r.ok ? {score:r.score, total:r.total, percent:r.percent} : {score:local, total:N, percent:Math.round(local / N * 1000) / 10, offline:true};
+      const t = tGet(); if (r.passPct != null) t.passPct = r.passPct;
+      if (kind === "pre") t.pre = res; else t.post.push(res);
+      tSave(t); logEvent(kind === "pre" ? "pretest" : "posttest", "test", kind + "_submitted", String(res.percent)); renderMap();
+      testDone(kind, res, final); };
+  };
+  draw();
+}
+function testDone(kind, res, answers){
+  const t = tGet(), isPre = kind === "pre", passed = !isPre && postPassed(), left = attemptsLeft();
+  const showReview = answers && !isPre && (passed || !left);
+  const us = answers ? unitScores(answers) : null;
+  const gain = !isPre && t.pre ? Math.round((postBest() - t.pre.percent) * 10) / 10 : null;
+  $("#view").innerHTML = `<p class="crumb">${isPre ? "Pre-test" : "Post-test"}</p><h1>${isPre ? "Your starting point" : passed ? "You passed!" : "Post-test result"}</h1>
+   <div class="card t-card t-result">
+    <div class="t-score"><div class="t-big">${res.score}<span>/${res.total}</span></div><div><b>${res.percent}%</b>${isPre ? `<p class="explain">This is not a grade. It shows what you knew before the course.</p>` : passed ? `<p class="explain">You reached the ${t.passPct}% needed for the certificate${gain != null ? `, and improved by <b>${gain > 0 ? "+" : ""}${gain}</b> points since the pre-test` : ""}.</p>` : `<p class="explain">You need ${t.passPct}% for the certificate. Attempts left: <b>${left}</b>.</p>`}</div></div>
+    ${us ? `<h3>By unit</h3><div class="gr-chart">${Object.keys(us).map(u => `<div class="gr-row"><span>${esc(UNIT_NAMES[u])}</span><div class="gr-bars"><i class="gr-post" style="width:${us[u][0] / us[u][1] * 100}%"></i></div><span>${us[u][0]} of ${us[u][1]}</span></div>`).join("")}</div>` : ""}
+    ${!isPre && !passed && left && us ? `<p>Review the units with the lowest scores (open their modules and quizzes), then try again.</p>` : ""}
+    <div class="controls">${isPre ? `<a class="btn primary" href="#/m/1.1">Start Module 1.1 →</a>` : passed ? `<a class="btn primary" href="#/certificate">Get your certificate →</a>` : left ? `<a class="btn primary" href="#/posttest">Try again</a><a class="btn" href="#/home">Review the course</a>` : `<a class="btn" href="#/home">Course home</a>`}</div>
+    ${res.offline ? `<p class="explain">Saved on this device. It will count on the server only when you are online (and the course server is connected).</p>` : ""}</div>
+   ${showReview ? `<h2>Review your answers</h2><ol class="t-review">${TEST.items.map((it, k) => `<li class="${answers[k] === it.a ? "ok" : "no"}"><b>${esc(it.q)}</b><p>${answers[k] === it.a ? "✓" : "✗"} Your answer: ${answers[k] >= 0 ? esc(it.o[answers[k]]) : "I don't know yet"}${answers[k] === it.a ? "" : `<br><span class="explain">Correct: ${esc(it.o[it.a])}</span>`}</p><p class="explain">${esc(it.e)}</p></li>`).join("")}</ol>` : ""}`;
+  if (passed) confetti();
+}
+
+/* ---- certificate ---- */
+function certHTML(c, preview){
+  const verify = location.origin + location.pathname + "#/verify/" + encodeURIComponent(c.id);
+  return `<div class="cert cert-sheet" id="certSheet"><div class="cert-in">
+    <p class="cert-k">Certificate of completion</p><p class="cert-sub">This certifies that</p>
+    <h2 class="cert-n">${esc(c.name)}</h2>
+    <p class="cert-sub">has completed the self-paced course</p>
+    <h3 style="margin:.3em 0">${esc(COURSE_TITLE)}</h3><p class="cert-d">${esc(COURSE_SUBTITLE)}: ${Object.keys(MODULES).length} modules, about ${c.hours || 48} hours, and a passed post-test.</p>
+    <div class="cert-f"><div><b>${esc(c.issued)}</b><span>Date issued</span></div><div><b>Morris C. Bana, LPT</b><span>Course creator</span></div><div><b class="mono">${esc(c.id)}</b><span>Certificate ID</span></div></div>
+    <p class="cert-v">${preview ? "Preview only: not verifiable until the course server is connected." : `Verify at ${esc(verify)}`}</p></div></div>`;
+}
+async function viewCertificate(){
+  const t = tGet(), admin = isAdmin() || !!adminSess();
+  const head = `<p class="crumb">Finish line</p><h1>Your certificate</h1>`;
+  if (t.cert){ $("#view").innerHTML = head + certHTML(t.cert, t.cert.id === "PREVIEW") + certTools(t.cert); wireCertTools(t.cert); return; }
+  const steps = [["Pre-test taken", preDone()], ["All " + Object.keys(MODULES).length + " modules complete", allModulesDone()], [`Post-test passed (${t.passPct}% or more)`, postPassed()]];
+  const ok = (steps[1][1] && steps[2][1]) || admin;
+  $("#view").innerHTML = `${head}<div class="card t-card"><p>Only learners who complete the course earn a certificate.</p>
+   <ul class="fin-steps">${steps.map((s, k) => `<li class="${s[1] ? "done" : ""}"><span class="fin-ic">${s[1] ? "✓" : k + 1}</span><div><b>${esc(s[0])}</b></div>${!s[1] ? `<a class="btn small" href="${k === 0 ? "#/pretest" : k === 1 ? "#/home" : "#/posttest"}">Go</a>` : ""}</li>`).join("")}</ul>
+   ${ok ? `<h3>How should your name appear?</h3><p class="explain">Check the spelling carefully: the name cannot be changed after the certificate is issued.</p>
+    <div class="field"><label for="cName">Full name</label><input id="cName" maxlength="80" value="${esc([user.givenName, user.lastName].filter(Boolean).join(" ") || user.name || "")}"></div>
+    <label class="consent"><input type="checkbox" id="cOk"><span>This is my name, spelled correctly.</span></label><div class="err" id="cErr" role="alert"></div>
+    <button class="btn primary big" id="cGo" type="button">Issue my certificate</button>` : `<p class="explain">Finish the steps above to unlock your certificate.</p>`}</div>`;
+  if (!ok) return;
+  $("#cGo").onclick = async () => { const name = $("#cName").value.trim();
+    if (name.length < 3) return void ($("#cErr").textContent = "Enter your full name.");
+    if (!$("#cOk").checked) return void ($("#cErr").textContent = "Tick the box to confirm your name.");
+    $("#cGo").disabled = true; $("#cGo").textContent = "Issuing…";
+    const r = await api("certificate", {name}, false); let cert;
+    if (r.ok) cert = r.cert;
+    else if (r.offline) cert = {id:"PREVIEW", name, issued:new Date().toISOString().slice(0, 10), hours:48};
+    else { $("#cGo").disabled = false; $("#cGo").textContent = "Issue my certificate";
+      return void ($("#cErr").textContent = {modules_incomplete:"The server does not see every module as complete yet. Open each module (it syncs), then try again.", post_not_passed:"The server has no passing post-test for you yet.", name_required:"Enter your full name."}[r.error] || "Could not issue the certificate (" + r.error + ")."); }
+    const t2 = tGet(); t2.cert = cert; tSave(t2); logEvent("certificate", "cert", "certificate_issued", cert.id); confetti(); viewCertificate(); };
+}
+function certTools(c){ return `<div class="controls no-print cert-tools"><button class="btn primary" id="cPrint" type="button">Print or save as PDF</button>${c.id !== "PREVIEW" ? `<button class="btn" id="cLink" type="button">Copy verification link</button>` : ""}<a class="btn" href="#/feedback">Share course feedback</a></div>
+  <p class="explain no-print">To save a PDF, choose “Save as PDF” as the printer. Landscape fits best.</p>`; }
+function wireCertTools(c){ $("#cPrint").onclick = () => { document.body.classList.add("printing-cert"); window.print(); setTimeout(() => document.body.classList.remove("printing-cert"), 500); };
+  if ($("#cLink")) $("#cLink").onclick = () => { copyText(location.origin + location.pathname + "#/verify/" + encodeURIComponent(c.id)); toast("Verification link copied."); }; }
+async function viewVerify(id){
+  $("#view").innerHTML = `<p class="crumb">Certificate check</p><h1>Verify a certificate</h1><div class="card t-card" id="vBox"><p class="explain">Checking ${esc(id)}…</p></div>`;
+  const r = await apiPublic("verifyCert", {id});
+  $("#vBox").innerHTML = r.ok && r.found ? `<p class="feedback ok">✓ This certificate is genuine.</p><div class="kv"><span>Name</span><b>${esc(r.name)}</b><span>Course</span><b>${esc(r.course)}</b><span>Issued</span><b>${esc(r.issued)}</b><span>Certificate ID</span><b class="mono">${esc(r.id)}</b></div>`
+    : r.ok ? `<p class="feedback no">✗ No certificate has this ID. Check that the ID was typed exactly.</p>` : `<p class="err">Could not check right now (${esc(r.error || "offline")}). Try again later.</p>`;
+}
+
+/* ---- admin: pre/post analysis and certificates ---- */
+function adminAssessHTML(r){
+  const T = r.tests || [], C = r.certs || [], by = {};
+  T.forEach(x => { by[x.email] = by[x.email] || {pre:null, post:[]}; if (x.kind === "pre" && !by[x.email].pre) by[x.email].pre = x; if (x.kind === "post") by[x.email].post.push(x); });
+  const pre = T.filter(x => x.kind === "pre" && +x.attempt === 1), postFirst = T.filter(x => x.kind === "post" && +x.attempt === 1);
+  const avg = a => a.length ? a.reduce((s, v) => s + v, 0) / a.length : null, f1 = v => v == null ? "–" : v.toFixed(1);
+  const pairs = Object.values(by).filter(p => p.pre && p.post.length).map(p => [+p.pre.percent, Math.max(...p.post.map(x => +x.percent))]);
+  const gains = pairs.map(p => p[1] - p[0]), ng = pairs.filter(p => p[0] < 100).map(p => (p[1] - p[0]) / (100 - p[0]));
+  const items = TEST.items.map((it, k) => { const pc = rows => { const v = rows.map(x => { try { return JSON.parse(x.answers)[k] === it.a ? 1 : 0; } catch(e){ return null; } }).filter(v => v !== null); return v.length ? v.reduce((a, b) => a + b, 0) / v.length * 100 : null; };
+    return [k + 1, it.u, it.q, pc(pre), pc(postFirst)]; });
+  return `<h2>Pre-test, post-test, and certificates</h2>
+   <div class="bento"><div class="spot span2"><div class="big">${pre.length} / ${postFirst.length}</div><div class="lbl">pre-tests / post-tests taken</div></div>
+    <div class="spot span2"><div class="big">${f1(avg(pre.map(x => +x.percent)))}% → ${f1(avg(pairs.map(p => p[1])))}%</div><div class="lbl">average pre → best post (${pairs.length} matched learners)</div></div>
+    <div class="spot span2"><div class="big">${f1(avg(gains))} <small>pts</small></div><div class="lbl">average gain · normalized gain ⟨g⟩ = ${ng.length ? avg(ng).toFixed(2) : "–"}</div></div>
+    <div class="spot span2"><div class="big">${C.length}</div><div class="lbl">certificates issued (pass mark ${r.passPct == null ? 70 : r.passPct}%)</div></div></div>
+   <details><summary><b>Item analysis</b> <span class="explain">(% correct per question, pre vs. first post attempt; low post scores point to content to improve)</span></summary>
+    <div class="adm-tablewrap"><table class="t"><tr><th>#</th><th>Unit</th><th>Question</th><th>Pre % correct</th><th>Post % correct</th></tr>${items.map(x => `<tr><td>${x[0]}</td><td>${x[1]}</td><td>${esc(x[2])}</td><td>${f1(x[3])}</td><td>${f1(x[4])}</td></tr>`).join("")}</table></div></details>
+   <details><summary><b>Certificates</b></summary><div class="adm-tablewrap"><table class="t"><tr><th>ID</th><th>Name</th><th>Email</th><th>Issued</th><th>Pre %</th><th>Post %</th></tr>${C.map(c => `<tr><td class="mono">${esc(c.id)}</td><td>${esc(c.name)}</td><td>${esc(c.email)}</td><td>${esc(c.issued)}</td><td>${esc(String(c.pre))}</td><td>${esc(String(c.post))}</td></tr>`).join("") || `<tr><td colspan="6">None yet</td></tr>`}</table></div></details>
+   <div class="controls"><button class="btn" id="tCsv" type="button">Download test results .csv</button></div>`;
+}
+function wireAdminAssess(r){ const b = $("#tCsv"); if (!b) return; b.onclick = () => { const H = ["at","email","kind","attempt","score","total","percent","seconds"].concat(TEST.items.map((_, k) => "q" + (k + 1)));
+  downloadText("test_results.csv", [H.join(",")].concat((r.tests || []).map(x => { let a = []; try { a = JSON.parse(x.answers); } catch(e){} return H.slice(0, 8).map(h => csvCell(x[h])).concat(TEST.items.map((it, k) => csvCell(a[k] === undefined ? "" : a[k] === it.a ? 1 : 0))).join(","); })).join("\n"), "text/csv"); }; }
 
 </script>
 <script>/* ==== js/pages.js ==== */
@@ -9026,51 +9313,84 @@ function newForm(){
     $("#rGo").disabled = true; $("#rGo").textContent = "Creating your profile…";
     user = {email, givenName:given, lastName:last, name:profile.name, role, gradeLevels, minor: age < 18, aiAllowed: age >= CONFIG.AI_MIN_AGE, researchConsent: researchConsent && (age >= 18 || researchGuardian) ? "yes" : "no"};
     const r = await api("register", profile);
-    if (r.ok === false && !r.offline && r.error !== "network"){
+    if (r.ok === false && r.error === "exists"){
       user = null; $("#rGo").disabled = false; $("#rGo").textContent = "Create profile and start";
+      toast("You already have a profile. Sign in with a code sent to your email."); backForm(email); $("#tabNew").setAttribute("aria-selected", false); $("#tabBack").setAttribute("aria-selected", true); return;
+    }
+    if (r.ok === false && !r.offline){
+      user = null; $("#rGo").disabled = false; $("#rGo").textContent = "Create profile and start";
+      if (r.error === "network" || r.error === "busy" || r.error === "rate_limited") return fail("We couldn't reach the course server just now. Check your connection and try again in a minute.");
       return fail(({invalid_email:"This email is not allowed for this course.", invalid_age:"Check your age.", guardian_consent_required:"A parent or guardian must agree for learners below 18.", consent_required:"Please agree to the Data Privacy Statement."})[r.error] || "We couldn't create your profile: " + r.error);
     }
     if (r.ok && r.admin) user.admin = true;
+    if (r.ok && r.token) user.token = r.token;
     rememberUser(); prog = Object.assign(blankProg(), store.get(pkey(), {}));
     api("access", {device, userAgent:navigator.userAgent.slice(0,140), page:"register", board:getBoard()});
     toast(r.ok ? `Welcome, ${given}! Your profile is ready.` : "Saved on this device. We'll sync when you're online.");
     location.hash = "#/overview"; route();
   };
 }
-function backForm(){
+function backForm(prefill){
+  if (!prefill){ try { prefill = sessionStorage.getItem("b2b_prefill") || ""; sessionStorage.removeItem("b2b_prefill"); } catch(e){} }
+  const known = knownProfiles(), kn = !prefill && known.length;
   $("#formArea").innerHTML = `<form id="back" novalidate><h2 style="margin:.2em 0 .1em">Welcome back</h2>
-   ${knownProfiles().length ? `<p class="explain" style="margin-top:0">This device remembers you. Tap your name to continue.</p>
-   <div class="known">${knownProfiles().slice(0, 5).map(p => `<div class="known-row"><button type="button" class="known-btn" data-email="${esc(p.email)}"><span class="known-av">${esc(String(p.givenName || p.name || p.email)[0].toUpperCase())}</span><span class="known-tx"><b>Continue as ${esc(p.givenName || p.name || "")}</b><span>${esc(p.email)}</span></span><span aria-hidden="true">→</span></button><button type="button" class="btn small known-x" data-forget="${esc(p.email)}" aria-label="Remove ${esc(p.email)} from this device" title="Remove from this device">✕</button></div>`).join("")}</div>
-   <button type="button" class="linkbtn" id="bOther">Use a different email</button>` : `<p class="explain" style="margin-top:0">Enter the email you used when you signed up. We'll bring back your profile and progress.</p>`}
-   <div class="field" id="bEmailWrap" ${knownProfiles().length ? "hidden" : ""}><label for="bEmail">Email / School email</label><input id="bEmail" type="email" autocomplete="email" inputmode="email" required></div>
-   <div class="err" id="bErr" role="alert"></div><button class="btn primary big" type="submit" id="bGo" ${knownProfiles().length ? "hidden" : ""}>Continue</button>
-   ${knownProfiles().length ? `<p class="explain known-note">Shared computer or iPad? Tap ✕ to remove your name from this device when you finish.</p>` : ""}</form>`;
-  const showOther = () => { $("#bEmailWrap").hidden = false; $("#bGo").hidden = false; const o = $("#bOther"); if (o) o.hidden = true; $("#bEmail").focus(); };
-  if ($("#bOther")) $("#bOther").onclick = showOther;
-  document.querySelectorAll(".known-btn").forEach(b => b.onclick = () => { $("#bEmail").value = b.dataset.email; b.disabled = true; b.querySelector("b").textContent = "Signing you in…"; $("#back").requestSubmit ? $("#back").requestSubmit() : $("#back").dispatchEvent(new Event("submit")); });
-  document.querySelectorAll(".known-x").forEach(b => b.onclick = () => { if (!confirm("Remove " + b.dataset.forget + " from this device? Your progress on the course server is kept.")) return; forgetProfile(b.dataset.forget); store.del("b2b_fb_" + b.dataset.forget); backForm(); toast("Removed from this device."); });
-  $("#back").onsubmit = async e => {
-    e.preventDefault();
-    const email = $("#bEmail").value.trim().toLowerCase();
-    const fail = msg => { $("#bErr").textContent = msg; $("#bEmailWrap").hidden = false; $("#bGo").hidden = false; document.querySelectorAll(".known-btn").forEach(k => { k.disabled = false; const kb = k.querySelector("b"); if (kb && /Signing/.test(kb.textContent)) kb.textContent = "Try again"; }); A("#back", {x:[0,-10,10,-6,6,0]}, {duration:.4}); };
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return fail("Enter a valid email address.");
-    $("#bGo").disabled = true; $("#bGo").textContent = "Finding your profile…";
-    const local = store.get("b2b_profiles", {})[email];
-    let found = null, serverProg = null;
-    if (apiReady()){
-      const r = await apiPublic("lookup", {email});
-      if (r.ok && r.found){ const p = r.profile; found = {email, givenName:p.givenName, lastName:(local && local.lastName) || "", name:p.givenName, role:p.role, gradeLevels:p.gradeLevels, minor:p.minor, aiAllowed:p.aiAllowed, researchConsent:p.researchConsent || "", admin:!!p.admin}; serverProg = r.progress; if (p.board && BOARDS[p.board]) setBoard(p.board); }
-      else if (r.ok && !r.found && !local){ $("#bGo").disabled = false; $("#bGo").textContent = "Continue"; return fail("We couldn't find that email. Check the spelling, or choose “I'm new here” to sign up."); }
-    }
-    if (!found && local) found = local;
-    if (!found){ $("#bGo").disabled = false; $("#bGo").textContent = "Continue"; return fail(apiReady() ? "We couldn't reach the course server. Check your connection and try again." : "This device has no profile for that email. Choose “I'm new here” to sign up."); }
-    user = found; rememberUser();
+   ${kn ? `<p class="explain" style="margin-top:0">This device remembers you. Tap your name to continue.</p>
+   <div class="known">${known.slice(0, 5).map(p => `<div class="known-row"><button type="button" class="known-btn" data-email="${esc(p.email)}"><span class="known-av">${esc(String(p.givenName || p.name || p.email)[0].toUpperCase())}</span><span class="known-tx"><b>Continue as ${esc(p.givenName || p.name || "")}</b><span>${esc(p.email)}</span></span><span aria-hidden="true">→</span></button><button type="button" class="btn small known-x" data-forget="${esc(p.email)}" aria-label="Remove ${esc(p.email)} from this device" title="Remove from this device">✕</button></div>`).join("")}</div>
+   <button type="button" class="linkbtn" id="bOther">Use a different email</button>` : `<p class="explain" style="margin-top:0">Enter the email you used when you signed up.${apiReady() ? " We'll email you a 6-digit code to confirm it's you." : ""}</p>`}
+   <div class="field" id="bEmailWrap" ${kn ? "hidden" : ""}><label for="bEmail">Email / School email</label><input id="bEmail" type="email" autocomplete="email" inputmode="email" required value="${esc(prefill || "")}"></div>
+   <div class="field" id="bCodeWrap" hidden><label for="bCode">6-digit code</label><input id="bCode" inputmode="numeric" autocomplete="one-time-code" maxlength="6" pattern="[0-9]*" placeholder="123456">
+    <p class="explain" id="bCodeNote"></p><button type="button" class="linkbtn" id="bResend">Send a new code</button></div>
+   <div class="err" id="bErr" role="alert"></div><button class="btn primary big" type="submit" id="bGo" ${kn ? "hidden" : ""}>${apiReady() ? "Send me a code" : "Continue"}</button>
+   ${kn ? `<p class="explain known-note">Shared computer or iPad? Tap ✕ to remove your name from this device when you finish.</p>` : ""}</form>`;
+  let stage = "email";
+  const btn = $("#bGo"), setBtn = (t, d) => { btn.textContent = t; btn.disabled = !!d; };
+  const fail = msg => { $("#bErr").textContent = msg; $("#bEmailWrap").hidden = stage === "code"; btn.hidden = false; document.querySelectorAll(".known-btn").forEach(k => { k.disabled = false; const kb = k.querySelector("b"); if (kb && /Signing|Checking/.test(kb.textContent)) kb.textContent = "Try again"; }); A("#back", {x:[0,-10,10,-6,6,0]}, {duration:.4}); };
+  const finish = (found, serverProg) => {
+    const ts = found.tests; delete found.tests; user = found; rememberUser(); authLostShown = false; if (ts) mergeTests(ts); if (window.hideAuthBanner) hideAuthBanner();
     prog = Object.assign(blankProg(), store.get(pkey(), {}));
     if (serverProg){ ["done","quiz","rating","act"].forEach(k => prog[k] = Object.assign({}, serverProg[k] || {}, prog[k] || {})); saveProg(); }
-    api("access", {device, userAgent:navigator.userAgent.slice(0,140), page:"return", board:getBoard()});
-    toast(`Welcome back, ${user.givenName || user.name}!`); location.hash = "#/home"; route();
+    api("access", {device, userAgent:navigator.userAgent.slice(0,140), page:"return", board:getBoard()}).then(r => { if (r && r.ok && !!r.admin !== !!user.admin){ user.admin = !!r.admin; rememberUser(); renderMap(); } });
+    flushQueue(); toast(`Welcome back, ${user.givenName || user.name}!`); location.hash = "#/home"; route(); };
+  const fromServer = (email, r) => { const p = r.profile || {}, local = store.get("b2b_profiles", {})[email] || {};
+    if (p.board && BOARDS[p.board]) setBoard(p.board);
+    return {email, givenName:p.givenName || local.givenName, lastName:p.lastName || local.lastName || "", name:p.givenName || local.name, role:p.role, gradeLevels:p.gradeLevels, minor:p.minor, aiAllowed:p.aiAllowed, researchConsent:p.researchConsent || "", admin:!!p.admin, token:r.token, tests:r.tests || null}; };
+  const sendCode = async email => {
+    setBtn("Sending your code…", true); $("#bErr").textContent = "";
+    const r = await apiPublic("lookup", {email, device});
+    if (r.ok && r.found && r.token) return finish(fromServer(email, r), r.progress);   // the course owner turned codes off
+    if (r.ok && r.found && r.codeSent){ stage = "code"; $("#bEmailWrap").hidden = true; $("#bCodeWrap").hidden = false; const o = $("#bOther"); if (o) o.hidden = true; $(".known") && ($(".known").hidden = true);
+      $("#bCodeNote").innerHTML = `We sent a code to <b>${esc(email)}</b>. It expires in 10 minutes. Check your spam folder if you don't see it.`; setBtn("Sign in"); btn.hidden = false; $("#bCode").focus(); return; }
+    setBtn("Send me a code");
+    if (r.ok && !r.found) return fail("We couldn't find that email. Check the spelling, or choose “I'm new here” to sign up.");
+    fail({invalid_email:"Enter a valid email address.", rate_limited:"Too many tries. Wait a few minutes, then try again.", too_many_codes:"We already sent 3 codes in the last hour. Use the newest code, or wait 15 minutes.", email_quota:"The course can't send more email codes today. Please try again tomorrow, or ask your teacher.", network:"We couldn't reach the course server. Check your connection and try again.", busy:"The course server is busy. Try again in a minute."}[r.error] || "Sign-in failed (" + (r.error || "unknown") + ").");
   };
+  const checkCode = async email => {
+    const code = $("#bCode").value.replace(/\D/g, ""); if (code.length !== 6) return fail("Enter the 6-digit code from the email.");
+    setBtn("Checking…", true); const r = await apiPublic("verify", {email, code, device}); setBtn("Sign in");
+    if (r.ok && r.token) return finish(fromServer(email, r), r.progress);
+    fail(r.error === "bad_code" ? `That code is not right. ${r.triesLeft} ${r.triesLeft === 1 ? "try" : "tries"} left.` : r.error === "code_expired" ? "That code expired or was used too many times. Tap “Send a new code”." : "We couldn't check the code. Try again.");
+  };
+  const offlineSignIn = email => { const local = store.get("b2b_profiles", {})[email]; if (!local) return fail("This device has no profile for that email. Choose “I'm new here” to sign up."); finish(local, null); };
+  $("#back").onsubmit = async e => { e.preventDefault(); const email = $("#bEmail").value.trim().toLowerCase();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return fail("Enter a valid email address.");
+    if (!apiReady()) return offlineSignIn(email);
+    stage === "code" ? checkCode(email) : sendCode(email); };
+  $("#bResend").onclick = () => { stage = "email"; $("#bCode").value = ""; sendCode($("#bEmail").value.trim().toLowerCase()); };
+  if ($("#bOther")) $("#bOther").onclick = () => { $("#bEmailWrap").hidden = false; btn.hidden = false; $("#bOther").hidden = true; $("#bEmail").focus(); };
+  document.querySelectorAll(".known-btn").forEach(b => b.onclick = () => { const email = b.dataset.email, p = store.get("b2b_profiles", {})[email];
+    $("#bEmail").value = email; b.disabled = true;
+    if (!apiReady() || (p && p.token)) { b.querySelector("b").textContent = "Signing you in…"; return finish(p, null); }   // this device already has a session: no code needed
+    b.querySelector("b").textContent = "Sending a code…"; sendCode(email); });
+  document.querySelectorAll(".known-x").forEach(b => b.onclick = () => { const em = b.dataset.forget; if (!confirm("Remove " + em + " from this device? Your progress on the course server is kept.")) return;
+    const p = store.get("b2b_profiles", {})[em]; if (p && p.token && apiReady()) post({action:"logout", token:p.token}, 0);
+    forgetProfile(em); store.del("b2b_fb_" + em); backForm(); toast("Removed from this device."); });
+  if (prefill && apiReady()) sendCode(prefill);
 }
+/* Banner shown when this device's session is no longer accepted (e.g. after the server update). */
+window.showAuthBanner = email => { const b = $("#banner"); if (!b) return;
+  b.innerHTML = `<div class="banner auth-banner">Please confirm your email so your progress keeps saving to the course server. <button class="btn small" id="authFix" type="button">Confirm with a code</button></div>`;
+  $("#authFix").onclick = () => { const em = email; sendEvents(); store.del("b2b_user"); user = null; aiHistory = []; prog = blankProg(); renderWho(); try { sessionStorage.setItem("b2b_prefill", em); } catch(e){} if (location.hash === "#/back") route(); else location.hash = "#/back"; }; };
+window.hideAuthBanner = () => { const b = $("#banner"); if (b && b.querySelector(".auth-banner")) b.innerHTML = ""; };
 function rememberUser(){ user.lastUsed = Date.now(); store.set("b2b_user", user); const all = store.get("b2b_profiles", {}); all[user.email] = user; store.set("b2b_profiles", all); }
 const isAdmin = () => !!(user && user.admin);
 
@@ -9171,7 +9491,7 @@ function viewAiLog(){
     c.querySelectorAll("[data-f]").forEach(f => f.onchange = f.oninput = () => { L[i][f.dataset.f] = f.value; save(); clearTimeout(c.t); c.t = setTimeout(() => api("ailog", {entry:L[i]}), 1500); });
     c.querySelector(".alDel").onclick = () => { if (confirm("Delete this entry?")){ L.splice(i, 1); save(); viewAiLog(); } }; });
   $("#alNew").onclick = () => { aiLogAdd({}); viewAiLog(); };
-  $("#alCsv").onclick = () => { const H = ["date","module","tool","framework","task","prompt","verify","decision","disclose"]; downloadText("ai_use_log.csv", [H.join(",")].concat(L.map(e => H.map(h => `"${String(e[h] || "").replace(/"/g,'""')}"`).join(","))).join("\n"), "text/csv"); };
+  $("#alCsv").onclick = () => { const H = ["date","module","tool","framework","task","prompt","verify","decision","disclose"]; downloadText("ai_use_log.csv", [H.join(",")].concat(L.map(e => H.map(h => csvCell(e[h])).join(","))).join("\n"), "text/csv"); };
 }
 
 /* ============ OTHER PAGES ============ */
@@ -9260,10 +9580,11 @@ async function viewAdmin(){
   $("#admBody").innerHTML = `<div class="bento"><div class="spot span3"><div class="big">${L.length}</div><div class="lbl">learners</div></div><div class="spot span3"><div class="big">${(L.reduce((s, l) => s + (+l.minutes || 0), 0) / 60).toFixed(1)} h</div><div class="lbl">total active time</div></div><div class="spot span3"><div class="big">${r.aiCount || 0}</div><div class="lbl">questions to Proto</div></div><div class="spot span3"><div class="big">${r.uploadCount || 0}</div><div class="lbl">uploaded files</div></div></div>
    <div class="controls"><input class="dinput" id="admQ" placeholder="Filter by name, school, role…"><button class="btn" id="admCsv">Download .csv</button></div>
    <div class="adm-tablewrap"><table class="t" id="admT"><tr><th>Learner</th><th>Role</th><th>School / industry</th><th>Board</th><th>Active time</th><th>Modules done</th><th>Last seen</th><th>Folder</th></tr>
-   ${L.map(l => `<tr><td>${esc(l.name)}<br><span class="explain">${esc(l.email)}</span></td><td>${esc(l.role)} ${esc(l.grades || "")}</td><td>${esc(l.school || l.industry || "")}</td><td>${esc((BOARDS[l.board] || {}).short || l.board || "")}</td><td>${(+l.minutes / 60 || 0).toFixed(1)} h</td><td>${esc(String(l.modulesDone || 0))} / ${mods.length}</td><td>${esc(l.lastSeen || "")}</td><td>${l.folderUrl ? `<a href="${l.folderUrl}" target="_blank" rel="noopener">Open</a>` : ""}</td></tr>`).join("")}</table></div>${adminFeedbackHTML(r.feedback)}`;
+   ${L.map(l => `<tr><td>${esc(l.name)}<br><span class="explain">${esc(l.email)}</span></td><td>${esc(l.role)} ${esc(l.grades || "")}</td><td>${esc(l.school || l.industry || "")}</td><td>${esc((BOARDS[l.board] || {}).short || l.board || "")}</td><td>${(+l.minutes / 60 || 0).toFixed(1)} h</td><td>${esc(String(l.modulesDone || 0))} / ${mods.length}</td><td>${esc(l.lastSeen || "")}</td><td>${l.folderUrl ? `<a href="${l.folderUrl}" target="_blank" rel="noopener">Open</a>` : ""}</td></tr>`).join("")}</table></div>${adminAssessHTML(r)}${adminFeedbackHTML(r.feedback)}${adminHealthHTML(r)}`;
+  wireAdminAssess(r);
   wireAdminFeedback(r.feedback);
   $("#admQ").oninput = e => { const q = e.target.value.toLowerCase(); $$("#admT tr").forEach((tr, i) => { if (i) tr.hidden = q && !tr.textContent.toLowerCase().includes(q); }); };
-  $("#admCsv").onclick = () => { const H = ["name","email","role","grades","school","industry","board","minutes","modulesDone","lastSeen"]; downloadText("learners.csv", [H.join(",")].concat(L.map(l => H.map(h => `"${String(l[h] == null ? "" : l[h]).replace(/"/g,'""')}"`).join(","))).join("\n"), "text/csv"); };
+  $("#admCsv").onclick = () => { const H = ["name","email","role","grades","school","industry","board","minutes","modulesDone","lastSeen"]; downloadText("learners.csv", [H.join(",")].concat(L.map(l => H.map(h => csvCell(l[h])).join(","))).join("\n"), "text/csv"); };
 }
 
 /* ============ ROUTER, NAV, AND SETTINGS ============ */
@@ -9274,11 +9595,13 @@ function route(){
   $("#map").style.display = guest ? "none" : ""; $(".shell").classList.toggle("noside", guest); document.body.classList.toggle("guest", guest);
   $("#searchBtn").style.display = guest ? "none" : ""; $("#aiFab").hidden = guest; $("#bottomNav").hidden = guest;
   if (guest && h0 === "#/admin"){ if (aiOpen) closeAI(); viewAdmin(); return; }
+  if (guest && h0.startsWith("#/verify/")){ if (aiOpen) closeAI(); viewVerify(decodeURIComponent(h0.slice(9))); return; }
   if (guest){ if (aiOpen) closeAI(); viewWelcome(location.hash === "#/back" || (location.hash !== "#/new" && knownProfiles().length) ? "back" : "new"); return; }
   renderWho(); currentModule = "";
   const h = location.hash, mm = h.match(/^#\/m\/([^?]+)(?:\?s=(.+))?/), page = h.split("?")[0];
   if (mm){ pendingAnchor = mm[2] || null; viewModule(mm[1]); }
-  else ({"#/progress":viewProgress, "#/overview":viewOverview, "#/references":viewReferences, "#/glossary":viewGlossary, "#/privacy":viewPrivacy, "#/ailog":viewAiLog, "#/lab":viewLab, "#/admin":viewAdmin, "#/feedback":viewFeedback}[page] || viewHome)();
+  else if (page.startsWith("#/verify/")) viewVerify(decodeURIComponent(page.slice(9)));
+  else ({"#/progress":viewProgress, "#/overview":viewOverview, "#/references":viewReferences, "#/glossary":viewGlossary, "#/privacy":viewPrivacy, "#/ailog":viewAiLog, "#/lab":viewLab, "#/admin":viewAdmin, "#/feedback":viewFeedback, "#/pretest":() => viewTest("pre"), "#/posttest":() => viewTest("post"), "#/certificate":viewCertificate}[page] || viewHome)();
   renderMap(); if (aiOpen) renderChips();
   document.querySelectorAll("#bottomNav [data-nav]").forEach(b => b.classList.toggle("on", (b.dataset.nav === "home" && !mm && page !== "#/progress") || (b.dataset.nav === "progress" && page === "#/progress") || (b.dataset.nav === "modules" && !!mm)));
   if (!mm || !mm[2]) { scrollTo({top:0}); A("#view", {opacity:[0,1], y:[10,0]}, {duration:.35, ease:[.22,1,.36,1]}); }
@@ -9317,7 +9640,7 @@ window.onBoardChange = () => { renderWho(); };
 /* ============ START ============ */
 applySettings(); applyDevice();
 if (!apiReady()) $("#banner").innerHTML = `<div class="banner">Preview mode: progress is saved on this device only. Uploads and Proto need the course server.</div>`;
-if (user){ api("access", {device, userAgent:navigator.userAgent.slice(0,140), page:"open", board:getBoard()}).then(r => { if (r && r.ok && user && !!r.admin !== !!user.admin){ user.admin = !!r.admin; rememberUser(); route(); } }); flushQueue(); }
+if (user){ api("access", {device, userAgent:navigator.userAgent.slice(0,140), page:"open", board:getBoard()}).then(r => { if (r && r.ok && r.tests) mergeTests(r.tests); if (r && r.ok && user && !!r.admin !== !!user.admin){ user.admin = !!r.admin; rememberUser(); route(); } else if (r && r.ok && r.tests) renderMap(); }); flushQueue(); }
 lastRouteKey = location.hash.split("?")[0];
 route();
 
